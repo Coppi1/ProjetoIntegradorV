@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Button } from 'primereact/button';
 import { Splitter, SplitterPanel } from 'primereact/splitter';
 import './cadastro.css';
-import Login from "./login";
+import Login from "../tela_login/Login";
+import { Link, useNavigate } from "react-router-dom";
 
 function Cadastro() {
     const [nome, setNome] = useState("");
@@ -12,6 +13,7 @@ function Cadastro() {
     const [message, setMessage] = useState('');
     const [error, setError] = useState("");
     const [showLogin, setShowLogin] = useState(false);
+    const navigate = useNavigate()
 
     const handleCadastro = () => {
         if (nome !== "" && email !== "" && password !== "" && repeatpassword !== "") {
@@ -25,9 +27,9 @@ function Cadastro() {
         setMessage(`Cadastro efetuado com sucesso ${serviceName}!`);
     }
 
-    const handleLoginButtonClick = () => {
-        setShowLogin(true);
-    }
+    // const handleLoginButtonClick = () => {
+    //     setShowLogin(true);
+    // }
 
     return (
         <div className="container">
@@ -39,7 +41,7 @@ function Cadastro() {
                             <p className="frase">Para se manter conectado conosco, faça login com suas informações pessoais</p>
                         </div>
                         <div>
-                            <Button className="button" onClick={handleLoginButtonClick}>Fazer login</Button>
+                            <Button className="button" onClick={() => navigate('/Login')}>Fazer login</Button>
                         </div>
                     </SplitterPanel>
 
@@ -104,10 +106,11 @@ function Cadastro() {
                     </SplitterPanel>
                 </Splitter>
             )}
-            {showLogin && <Login />}
+            {/* {showLogin && <Login />} */}
         </div>
     );
 }
 
-export default Cadastro;
 
+
+export default Cadastro;

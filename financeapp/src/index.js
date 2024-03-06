@@ -1,9 +1,11 @@
 import * as React from "react";
 import ReactDOM, { createRoot } from 'react-dom/client'; // Importa de react-dom/client
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Login } from "./app/tela_login/Login";
 import { LancamentoDespesa } from "./app/tela_lancamento_despesa/LancamentoDespesa";
 import { Home } from "./app/tela_home/Home";
+import { Inicio } from "./app/tela_inicial/Inicio";
+import Cadastro from "./app/tela_cadastro/cadastro";
+import Login from "./app/tela_login/Login";
 
 
 // const router = createBrowserRouter([
@@ -20,13 +22,8 @@ import { Home } from "./app/tela_home/Home";
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Login />,
-        children: [
-            {
-                path: "/",
-                element: <Login />
-            },
-        ]
+        element: <Inicio />,
+
     },
     {
         path: "LancamentoDespesa",
@@ -35,6 +32,18 @@ const router = createBrowserRouter([
     {
         path: "Home",
         element: <Home />
+    },
+    {
+        path: "Login",
+        element: <Login />
+    },
+    {
+        path: "Cadastro",
+        element: <Cadastro />
+    },
+    {
+        path: "Inicio",
+        element: <Inicio />
     }
 ]);
 

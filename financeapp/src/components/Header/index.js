@@ -2,22 +2,23 @@ import React, { useState } from 'react';
 import * as C from "./styles";
 import logo from './logo.png';
 import { Menubar } from 'primereact/menubar';
-import { Link } from 'react-router-dom';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { Button } from 'primereact/button';
-import { TieredMenu } from 'primereact/tieredmenu';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
+import 'primeicons/primeicons.css';
 
 export const Header = () => {
+
+    const navigate = useNavigate()
 
     const items = [
         {
             label: 'Home',
             icon: 'pi pi-fw pi-home',
             command: () => {
-                Navigate('/home')
-                console.log('Navegar para Home');
+                navigate('/home')
             },
         },
         {
@@ -25,13 +26,14 @@ export const Header = () => {
             icon: 'pi pi-fw pi-money-bill',
             items: [
                 {
-                    label: 'Opção 1',
+                    label: 'Lançamento de Despesas',
                     command: () => {
+                        navigate('/LancamentoDespesa')
                         console.log('Despesas Option 1 clicked');
                     }
                 },
                 {
-                    label: 'Opção 2',
+                    label: 'Relatórios',
                     command: () => {
                         console.log('Despesas Option 2 clicked');
                     }
@@ -43,18 +45,23 @@ export const Header = () => {
             icon: 'pi pi-fw pi-dollar',
             items: [
                 {
-                    label: 'Opção 1',
+                    label: 'Lançamento de Receitas',
                     command: () => {
+                        navigate('/LancamentoReceita')
                         console.log('Despesas Option 1 clicked');
                     }
                 },
                 {
-                    label: 'Opção 2',
+                    label: 'Relatórios',
                     command: () => {
                         console.log('Despesas Option 2 clicked');
                     }
                 }
             ],
+        },
+        {
+            label: 'Conciliação Bancária',
+            icon: 'pi pi-briefcase',
         },
     ];
 
@@ -68,19 +75,19 @@ export const Header = () => {
         />
     );
 
-    const end = [
-        {
-            label: 'Config',
-            icon: 'pi pi-fw pi-dollar',
-            items: [
-                {
-                    label: 'Opção 1',
-                    command: () => {
-                        console.log('Despesas Option 1 clicked');
-                    }
-                },]
-        }
-    ]
+    // const end = [
+    //     {
+    //         label: 'Config',
+    //         icon: 'pi pi-fw pi-dollar',
+    //         items: [
+    //             {
+    //                 label: 'Opção 1',
+    //                 command: () => {
+    //                     console.log('Despesas Option 1 clicked');
+    //                 }
+    //             },]
+    //     }
+    // ]
 
     return (
 
@@ -88,15 +95,20 @@ export const Header = () => {
             <Menubar
                 start={start}
                 model={items}
-                end={end}
-            // end={
-            //     <Button
-            //         label="Configurações"
-            //         icon="pi pi-cog"
-            //         className="p-button-text"
-            //         onClick={() => console.log('Abrir configurações')}
-            //     />
-            // }
+                end={
+                    <div>
+                        <></>
+                        <Button
+                            label="Configurações"
+                            icon="pi pi-cog"
+                            className="p-button-text"
+                            onClick={() =>
+                                navigate('/configuracoes')
+                            }
+                        />
+                    </div>
+
+                }
             />
         </div>
 

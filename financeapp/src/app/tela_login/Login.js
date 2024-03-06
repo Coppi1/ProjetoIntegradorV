@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 import './login.css';
-import Cadastro from './cadastro';
+import Cadastro from "../tela_cadastro/cadastro";
+import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
     const [username, setUsername] = useState("");
@@ -10,6 +11,7 @@ function Login() {
     const [message, setMessage] = useState('');
     const [error, setError] = useState("");
     const [showCadastro, setShowCadastro] = useState(false);
+    const navigate = useNavigate()
 
     const handleLogin = () => {
         if (username !== "" && password !== "") {
@@ -23,16 +25,16 @@ function Login() {
         setMessage(`Login efetuado com sucesso ${serviceName}!`);
     }
 
-    const handleCadastroClick = () => {
-        setShowCadastro(true);
-    }
+    // const handleCadastroClick = () => {
+    //     setShowCadastro(true);
+    // }
 
     return (
         <div className="container">
             {showCadastro ? <Cadastro /> : (
                 <Card className="card">
                     <div className="buttoncontainer">
-                        <Button className="logobutton" onClick={handleCadastroClick}>
+                        <Button className="logobutton" onClick={() => navigate('/Inicio')}>
                             <img className="logo" src="https://cdn.pixabay.com/photo/2016/12/14/10/39/button-1905961_1280.png" alt="Retornar"></img>
                         </Button>
                     </div>
@@ -74,10 +76,13 @@ function Login() {
                     </div>
                     {error && <p className="error">{error}</p>}
                 </Card>
-            )}
-        </div>
+            )
+            }
+        </div >
     );
 }
 
 export default Login;
+
+
 

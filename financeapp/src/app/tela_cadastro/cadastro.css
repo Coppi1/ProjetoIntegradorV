@@ -1,0 +1,106 @@
+.container {
+    background-image: url('https://img.freepik.com/fotos-premium/dinheiro-crescimento-negocio-grafico-economia-financas-estoque-ou-moeda-investimento-diagrama-financeiro-grafico-de-lucro-de-acoes-de-precos-de-mercado-de-cambio-global-na-analise-economica-fundo-3d-com-comercio-de-sucesso_79161-2035.jpg?size=626&ext=jpg&ga=GA1.1.1395880969.1709424000&semt=sph');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.splitter {
+    width: 100%;
+    height: 100%;
+}
+
+.splitter-panel1 {
+    background-image: url('https://img.freepik.com/fotos-premium/dinheiro-crescimento-negocio-grafico-economia-financas-estoque-ou-moeda-investimento-diagrama-financeiro-grafico-de-lucro-de-acoes-de-precos-de-mercado-de-cambio-global-na-analise-economica-fundo-3d-com-comercio-de-sucesso_79161-2035.jpg?size=626&ext=jpg&ga=GA1.1.1395880969.1709424000&semt=sph');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.splitter-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+
+.label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    color: black;
+}
+
+.input {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 500px;
+    background-color: rgb(176, 240, 176);
+    color: black;
+}
+
+.buttoncontainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+    padding: 8px;
+    color: #050505;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.frase {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.titulo {
+    text-align: center;
+    font-size: 50px;
+    color: green;
+}
+
+.titulo2 {
+    text-align: center;
+    font-size: 17px;
+    color: green;
+}
+
+.logo {
+    display: inline-block;
+    margin: 0 10px;
+    width: 50px;
+    height: 50px;
+}
+
+.logobutton {
+    margin: 0 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.error {
+    color: red;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

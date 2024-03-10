@@ -6,6 +6,7 @@ import { Home } from "./app/tela_home/Home";
 import { Inicio } from "./app/tela_inicial/Inicio";
 import Cadastro from "./app/tela_cadastro/cadastro";
 import Login from "./app/tela_login/Login";
+import { LancamentoReceita } from "./app/tela_lancamento_receita/LancamentoReceita";
 
 
 // const router = createBrowserRouter([
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
     {
         path: "LancamentoDespesa",
         element: <LancamentoDespesa />
+    },
+    {
+        path: "LancamentoReceita",
+        element: <LancamentoReceita />
     },
     {
         path: "Home",

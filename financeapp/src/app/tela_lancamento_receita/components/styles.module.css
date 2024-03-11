@@ -1,10 +1,15 @@
 * {
   /* background-color: rgb(124, 120, 120); */
+
+  font-family: "Poppins", sans-serif;
 }
 
 .body {
+  font-weight: 300;
+  font-size: medium;
+
   padding-top: 1%;
-  font-size: 1.5em;
+
   display: grid;
   grid-template-rows: auto;
   gap: 10px;
@@ -14,7 +19,9 @@
 
 .formConteiner {
   display: grid;
-  padding-top: 0%;
+  padding: 15px;
+  border: 1px solid;
+  border-radius: 2%;
 }
 
 .tableConteiner {
@@ -27,12 +34,14 @@
 
 .graficoConteiner {
   display: grid;
-  grid-column: 1 / -1;
+  padding: 15px;
+  border: 1px solid;
+  border-radius: 2%;
 }
 
 .formGroup {
   padding: 3px;
-  padding-bottom: 5px;
+  padding-top: 5px;
   align-items: center;
   display: grid;
 }
@@ -40,18 +49,25 @@
 .titulo {
   text-align: center;
   padding-bottom: 15px;
+  text-transform: uppercase;
+  font-size: large;
+  font-weight: 5000;
 }
 
 .button {
   align-items: center;
   padding: 1px;
-  padding-top: 5px;
+  padding-top: 15px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.graficoData {
+.graficoFilter {
   display: grid;
-  padding: 5px;
+}
+
+.grafico {
+  padding-top: 15px;
+  justify-self: center;
 }

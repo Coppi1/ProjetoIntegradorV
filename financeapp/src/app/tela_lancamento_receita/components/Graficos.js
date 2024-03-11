@@ -46,25 +46,26 @@ export const Graficos = () => {
   }, []);
 
   return (
-    <div id="GraficoConteiner">
+    <div id="GraficoConteiner" className={styles.graficoConteiner}>
       <div className={styles.titulo}>
-        <h3>Visualização por Natureza</h3>
+        <h4>Visualização por Natureza</h4>
       </div>
-      <div className={styles.graficoData}>
+
+      <div className={styles.graficoFilter}>
         <label>Selecione a data: </label>
         <Dropdown></Dropdown>
+
         <div className={styles.button}>
           <Button>Aplicar</Button>
         </div>
       </div>
-      <div className={styles.graficoConteiner}>
-        <Chart
-          type="pie"
-          data={chartData}
-          options={chartOptions}
-          //   className="w-full md:w-30rem"
-        />
-      </div>
+
+      <Chart
+        type="pie"
+        data={chartData}
+        options={chartOptions}
+        className={styles.grafico}
+      />
     </div>
   );
 };

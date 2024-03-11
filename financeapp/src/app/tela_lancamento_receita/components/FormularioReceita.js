@@ -5,113 +5,110 @@ import { Calendar } from "primereact/calendar";
 import { Dropdown } from "primereact/dropdown";
 import { InputNumber } from "primereact/inputnumber";
 import styles from "./styles.module.css";
-import { Button } from 'primereact/button';
-
+import { Button } from "primereact/button";
+import { InputTextarea } from "primereact/inputtextarea";
 
 export const FormularioReceita = () => {
-    const [numeroUnico, setNumeroUnico] = useState("");
-    const [naturezaReceita, setNaturezaReceita] = useState("null");
-    const [pagamentos, setPagamentos] = useState("null")
-    const [descricao, setdescricao] = useState("");
+  const [numeroUnico, setNumeroUnico] = useState("");
+  const [naturezaReceita, setNaturezaReceita] = useState("null");
+  const [pagamentos, setPagamentos] = useState("null");
+  const [descricao, setdescricao] = useState("");
+  const [dtVencimento, setDtvencimento] = useState("");
+  const [valor, setValor] = useState();
 
-    const naturezas = [
-        { name: "Serviço Prestados", code: "1" },
-        { name: "Recebimentos de Clientes", code: "2" },
-        { name: "Contas Recebidas", code: "LDN" },
-        { name: "Contas a Receber", code: "IST" },
-    ];
+  const naturezas = [
+    { name: "Serviço Prestados", code: "1" },
+    { name: "Recebimentos de Clientes", code: "2" },
+    { name: "Contas Recebidas", code: "LDN" },
+    { name: "Contas a Receber", code: "IST" },
+  ];
 
-    const formaPagamento = [
-        { name: "Pix", code: "1" },
-        { name: "Transferencia", code: "2" },
-        { name: "Boleto", code: "LDN" },
-        { name: "Cartão de Credito", code: "IST" },
-        { name: "Cartão de Debito", code: "IST" },
-    ];
+  const formaPagamento = [
+    { name: "Pix", code: "1" },
+    { name: "Transferencia", code: "2" },
+    { name: "Boleto", code: "LDN" },
+    { name: "Cartão de Credito", code: "IST" },
+    { name: "Cartão de Debito", code: "IST" },
+  ];
 
+  return (
+    <div id="Formulario">
+      <div className={styles.titulo}>
+        <h3>Lançameto de Receitas</h3>
+      </div>
+      <Card>
+        <div className={styles.formConteiner}>
+          <div id="Numero" className={styles.formGroup}>
+            <label>Número único: </label>
+            <InputText
+              value={numeroUnico}
+              onChange={(e) => setNumeroUnico(e.target.value)}
+              readOnly="true"
+            />
+            <br></br>
+          </div>
 
+          <div id="Desc" className={styles.formGroup}>
+            <label>Descrição da Receita: </label>
+            <InputTextarea
+              value={descricao}
+              onChange={(e) => setdescricao(e.target.value)}
+            />
+            <br></br>
+          </div>
 
+          <div id="SelecReceita" className={styles.formGroup}>
+            <label>Natureza da Receita: </label>
+            <Dropdown
+              value={naturezaReceita}
+              onChange={(e) => setNaturezaReceita(e.value)}
+              options={naturezas}
+              optionLabel="name"
+              placeholder="Selecione a natureza"
+              className="w-full md:w-14rem"
+            />
+            <br></br>
+          </div>
 
+          <div id="DataVenc" className={styles.formGroup}>
+            <label>Data de Vencimento:</label>
+            <Calendar value={dtVencimento} onChange={(e) => e.target.value} />
+          </div>
 
-    const [dtVencimento, setDtvencimento] = useState("");
+          <div id="Valor" className={styles.formGroup}>
+            <label htmlFor="currency-us" className="font-bold block mb-2">
+              {" "}
+              Valor:
+            </label>
+            <InputNumber
+              inputId="currency-us"
+              value={valor}
+              onValueChange={(e) => setValor(e.value)}
+              mode="currency"
+              currency="USD"
+              locale="en-US"
+            />
+          </div>
 
-    const [valor, setValor] = useState();
+          <div id="FormaPgto" className={styles.formGroup}>
+            <label>Forma de Pagamento:</label>
+            <Dropdown
+              value={pagamentos}
+              onChange={(e) => setPagamentos(e.value)}
+              options={formaPagamento}
+              optionLabel="name"
+              placeholder="Selecione a forma de pagamento"
+              className="w-full md:w-14rem"
+            />
+            <br></br>
+          </div>
 
-    return (
-        <div id="conteiner" className={styles.body}>
-            <Card className={styles.card} >
-                <div id="formCard" className={styles.conteiner}>
-                    <h3>Lançamento de Receitas</h3>
-                    <div id="Numero" className={styles.formGroup}>
-                        <label>Número único: </label>
-                        <InputText
-                            value={numeroUnico}
-                            onChange={(e) => setNumeroUnico(e.target.value)}
-                        />
-                        <br></br>
-                    </div>
-
-                    <div id="Desc" className={styles.formGroup}>
-                        <label>Descrição da Receita: </label>
-                        <InputText
-                            value={descricao}
-                            onChange={(e) => setdescricao(e.target.value)}
-                        />
-                        <br></br>
-                    </div>
-
-                    <div id="SelecReceita" className={styles.formGroup}>
-                        <label>Natureza da Receita: </label>
-                        <Dropdown
-                            value={naturezaReceita}
-                            onChange={(e) => setNaturezaReceita(e.value)}
-                            options={naturezas}
-                            optionLabel="name"
-                            placeholder="Selecione a natureza"
-                            className="w-full md:w-14rem"
-                        />
-                        <br></br>
-                    </div>
-
-                    <div id="DataVenc" className={styles.formGroup}>
-                        <label>Data de Vencimento:</label>
-                        <Calendar value={dtVencimento} onChange={(e) => e.target.value} />
-                    </div>
-
-                    <div id="Valor" className={styles.formGroup}>
-                        <label htmlFor="currency-us" className="font-bold block mb-2"> Valor</label>
-                        <InputNumber
-                            inputId="currency-us"
-                            value={valor}
-                            onValueChange={(e) => setValor(e.value)}
-                            mode="currency"
-                            currency="USD"
-                            locale="en-US"
-                        />
-                    </div>
-
-                    <div id="FormaPgto" className={styles.formGroup}>
-                        <label>Forma de Pagamento:</label>
-                        <Dropdown
-                            value={pagamentos}
-                            onChange={(e) => setPagamentos(e.value)}
-                            options={formaPagamento}
-                            optionLabel="name"
-                            placeholder="Selecione a forma de pagamento"
-                            className="w-full md:w-14rem"
-                        />
-                        <br></br>
-                    </div>
-
-                    <div className={styles.button}>
-                        <Button label="Cadastrar" />
-                        <Button label="Limpar Campos" />
-                    </div>
-
-
-
-                </div>
-            </Card>
+          <div className={styles.button}>
+            <Button label="Lançar" />
+            <Button label="Limpar Campos" />
+          </div>
         </div>
-    );
+      </Card>
+    </div>
+  );
 };

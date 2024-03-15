@@ -1,5 +1,4 @@
-import { Card } from "primereact/card";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { InputText } from "primereact/inputtext";
 import { Calendar } from "primereact/calendar";
 import { Dropdown } from "primereact/dropdown";
@@ -7,29 +6,60 @@ import { InputNumber } from "primereact/inputnumber";
 import styles from "./styles.module.css";
 import { Button } from "primereact/button";
 import { InputTextarea } from "primereact/inputtextarea";
+import axios from "axios";
+
 
 export const FormularioReceita = () => {
   const [numeroUnico, setNumeroUnico] = useState("");
   const [naturezaReceita, setNaturezaReceita] = useState("null");
   const [pagamentos, setPagamentos] = useState("null");
-  const [descricao, setdescricao] = useState("");
+  const [descricao, setDescricao] = useState("");
   const [dtVencimento, setDtvencimento] = useState("");
   const [valor, setValor] = useState();
+  const [naturezas, setNaturezas] = useState([])
+  const [formasPgto, setFormasPgto] = useState([])
 
-  const naturezas = [
-    { name: "Serviço Prestados", code: "1" },
-    { name: "Recebimentos de Clientes", code: "2" },
-    { name: "Contas Recebidas", code: "LDN" },
-    { name: "Contas a Receber", code: "IST" },
-  ];
+  const buscarNatureza = async () => {
+    try {
+      const resposta = await axios.get("http://localhost:4000/naturezas");
+      // console.log(resposta.data)
+      console.log("Dados: " + resposta.data[0].descricao);
+      setNaturezas(resposta.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-  const formaPagamento = [
-    { name: "Pix", code: "1" },
-    { name: "Transferencia", code: "2" },
-    { name: "Boleto", code: "LDN" },
-    { name: "Cartão de Credito", code: "IST" },
-    { name: "Cartão de Debito", code: "IST" },
-  ];
+  const buscarFormaPgto = async () => {
+    try {
+      const resposta = await axios.get("http://localhost:4000/formaPagamento");
+      // console.log(resposta.data)
+      console.log("Dados: " + resposta.data[0].descricao);
+      setFormasPgto(resposta.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    buscarFormaPgto();
+    buscarNatureza();
+  }, []);
+
+  // const naturezas = [
+  //   { name: "Serviço Prestados", code: "1" },
+  //   { name: "Recebimentos de Clientes", code: "2" },
+  //   { name: "Contas Recebidas", code: "LDN" },
+  //   { name: "Contas a Receber", code: "IST" },
+  // ];
+
+  // const formaPagamento = [
+  //   { name: "Pix", code: "1" },
+  //   { name: "Transferencia", code: "2" },
+  //   { name: "Boleto", code: "LDN" },
+  //   { name: "Cartão de Credito", code: "IST" },
+  //   { name: "Cartão de Debito", code: "IST" },
+  // ];
 
   return (
     <div id="Formulario">
@@ -51,7 +81,7 @@ export const FormularioReceita = () => {
           <label>Descrição da Receita: </label>
           <InputTextarea
             value={descricao}
-            onChange={(e) => setdescricao(e.target.value)}
+            onChange={(e) => setDescricao(e.target.value)}
           />
           <br></br>
         </div>
@@ -62,7 +92,7 @@ export const FormularioReceita = () => {
             value={naturezaReceita}
             onChange={(e) => setNaturezaReceita(e.value)}
             options={naturezas}
-            optionLabel="name"
+            optionLabel="descricao"
             placeholder="Selecione a natureza"
             className="w-full md:w-14rem"
           />
@@ -96,8 +126,8 @@ export const FormularioReceita = () => {
           <Dropdown
             value={pagamentos}
             onChange={(e) => setPagamentos(e.value)}
-            options={formaPagamento}
-            optionLabel="name"
+            options={formasPgto}
+            optionLabel="descricao"
             placeholder="Selecione a forma de pagamento"
             className="w-full md:w-14rem"
           />

@@ -1,0 +1,16 @@
+{
+  "naturezas": [
+    { "id": "1", "descricao": "Serviço Prestados" },
+    { "id": "2", "descricao": "Recebimentos de Clientes" },
+    { "id": "3", "descricao": "Contas Recebidas" },
+    { "id": "4", "descricao": "Contas a Receber" }
+  ],
+
+  "formaPagamento": [
+    { "id": "1", "descricao": "Pix" },
+    { "id": "2", "descricao": "Transferencia" },
+    { "id": "3", "descricao": "Boleto" },
+    { "id": "4", "descricao": "Cartão de Credito" },
+    { "id": "5", "descricao": "Cartão de Debito" }
+  ]
+}

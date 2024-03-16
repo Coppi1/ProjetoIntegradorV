@@ -1,14 +1,19 @@
 import React from "react";
 import styles from "./styles.module.css";
-import { Card } from "primereact/card";
 import { Chart } from "primereact/chart";
 import { useState, useEffect } from "react";
 import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
+import axios from "axios";
 
 export const Graficos = () => {
-  const [chartData, setChartData] = useState({});
-  const [chartOptions, setChartOptions] = useState({});
+  const [chartData, setChartData] = useState({})
+  const [chartOptions, setChartOptions] = useState({})
+  const [receitas, setReceitas] = useState([])
+
+  useEffect(() => {
+    buscarReceitas();
+  }, []);
 
   useEffect(() => {
     const data = {
@@ -16,7 +21,7 @@ export const Graficos = () => {
       datasets: [
         {
           label: "Sales",
-          data: [540, 325, 702, 620],
+          data: Object.values(receitasPorNatureza), // Usando Object.values para obter os valores do objeto receitasPorNatureza
           backgroundColor: [
             "rgba(255, 159, 64, 0.2)",
             "rgba(75, 192, 192, 0.2)",
@@ -43,7 +48,25 @@ export const Graficos = () => {
 
     setChartData(data);
     setChartOptions(options);
-  }, []);
+
+  }, [receitas]); // Atualizar o gráfico sempre que receitas mudar
+
+  const buscarReceitas = async () => {
+    try {
+      const resposta = await axios.get("http://localhost:4000/receitas");
+      setReceitas(resposta.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const receitasPorNatureza = receitas.reduce((acc, receita) => {
+    if (!acc[receita.natureza]) {
+      acc[receita.natureza] = [];
+    }
+    acc[receita.natureza].push(receita.valor);
+    return acc;
+  }, {});
 
   return (
     <div id="GraficoConteiner" className={styles.graficoConteiner}>

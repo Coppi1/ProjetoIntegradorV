@@ -7,19 +7,25 @@ import styles from "./styles.module.css";
 import { Button } from "primereact/button";
 import { InputTextarea } from "primereact/inputtextarea";
 import axios from "axios";
+import Receita from "../../../models/Receita/Receita";
 
 
 export const FormularioReceita = () => {
   const [numeroUnico, setNumeroUnico] = useState("");
   const [naturezaReceita, setNaturezaReceita] = useState("null");
-  const [pagamentos, setPagamentos] = useState("null");
+  const [formaPgto, setformaPgto] = useState("null");
   const [descricao, setDescricao] = useState("");
   const [dtVencimento, setDtvencimento] = useState("");
   const [valor, setValor] = useState();
+
+
+
+
+
   const [naturezas, setNaturezas] = useState([])
   const [formasPgto, setFormasPgto] = useState([])
 
-  const buscarNatureza = async () => {
+  const buscarNaturezas = async () => {
     try {
       const resposta = await axios.get("http://localhost:4000/naturezas");
       // console.log(resposta.data)
@@ -30,9 +36,9 @@ export const FormularioReceita = () => {
     }
   };
 
-  const buscarFormaPgto = async () => {
+  const buscarFormasPgto = async () => {
     try {
-      const resposta = await axios.get("http://localhost:4000/formaPagamento");
+      const resposta = await axios.get("http://localhost:4000/formaPgto");
       // console.log(resposta.data)
       console.log("Dados: " + resposta.data[0].descricao);
       setFormasPgto(resposta.data);
@@ -42,24 +48,10 @@ export const FormularioReceita = () => {
   };
 
   useEffect(() => {
-    buscarFormaPgto();
-    buscarNatureza();
+    buscarFormasPgto();
+    buscarNaturezas();
   }, []);
 
-  // const naturezas = [
-  //   { name: "Serviço Prestados", code: "1" },
-  //   { name: "Recebimentos de Clientes", code: "2" },
-  //   { name: "Contas Recebidas", code: "LDN" },
-  //   { name: "Contas a Receber", code: "IST" },
-  // ];
-
-  // const formaPagamento = [
-  //   { name: "Pix", code: "1" },
-  //   { name: "Transferencia", code: "2" },
-  //   { name: "Boleto", code: "LDN" },
-  //   { name: "Cartão de Credito", code: "IST" },
-  //   { name: "Cartão de Debito", code: "IST" },
-  // ];
 
   return (
     <div id="Formulario">
@@ -101,7 +93,7 @@ export const FormularioReceita = () => {
 
         <div id="DataVenc" className={styles.formGroup}>
           <label>Data de Vencimento:</label>
-          <Calendar value={dtVencimento} onChange={(e) => e.target.value} />
+          <Calendar value={dtVencimento} onChange={(e) => setDtvencimento(e.value)} />
           <br></br>
         </div>
 
@@ -124,8 +116,8 @@ export const FormularioReceita = () => {
         <div id="FormaPgto" className={styles.formGroup}>
           <label>Forma de Pagamento:</label>
           <Dropdown
-            value={pagamentos}
-            onChange={(e) => setPagamentos(e.value)}
+            value={formaPgto}
+            onChange={(e) => setformaPgto(e.value)}
             options={formasPgto}
             optionLabel="descricao"
             placeholder="Selecione a forma de pagamento"

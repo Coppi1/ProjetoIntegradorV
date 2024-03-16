@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Header from '../../components/Header'
 import logo from "./logo.png"
 import guy from "./guy-elevateFinance.png"
 import { Menubar } from 'primereact/menubar';

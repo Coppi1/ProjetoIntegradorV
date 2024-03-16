@@ -7,7 +7,6 @@ import styles from "./styles.module.css";
 import { Button } from "primereact/button";
 import { InputTextarea } from "primereact/inputtextarea";
 import axios from "axios";
-import Receita from "../../../models/Receita/Receita";
 
 
 export const FormularioReceita = () => {

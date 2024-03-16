@@ -1,5 +1,5 @@
 import * as React from "react";
-import ReactDOM, { createRoot } from 'react-dom/client'; // Importa de react-dom/client
+import { createRoot } from 'react-dom/client'; // Importa de react-dom/client
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { LancamentoDespesa } from "./app/tela_lancamento_despesa/LancamentoDespesa";
 import { Home } from "./app/tela_home/Home";

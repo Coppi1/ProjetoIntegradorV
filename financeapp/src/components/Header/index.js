@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
-import * as C from "./styles";
+import React from 'react';
 import logo from './logo.png';
 import { Menubar } from 'primereact/menubar';
-import { Link, useNavigate } from 'react-router-dom';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 import { Button } from 'primereact/button';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';

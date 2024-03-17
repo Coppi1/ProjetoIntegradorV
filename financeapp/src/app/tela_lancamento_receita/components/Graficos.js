@@ -7,6 +7,8 @@ import { Button } from "primereact/button";
 import axios from "axios";
 // import buscarNaturezas from "./FormularioReceita"
 
+
+
 export const Graficos = () => {
   const [chartData, setChartData] = useState({})
   const [chartOptions, setChartOptions] = useState({})
@@ -19,6 +21,7 @@ export const Graficos = () => {
     buscarNaturezas()
 
   }, []);
+
 
   useEffect(() => {
 

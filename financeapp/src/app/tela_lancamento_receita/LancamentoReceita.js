@@ -1,9 +1,13 @@
 import React from "react";
 import Header from "../../components/Header";
 import { FormularioReceita } from "./components/FormularioReceita";
-import Grafico, { Graficos } from "./components/Graficos";
+import { Graficos } from "./components/Graficos";
 import { Table } from "./components/Table";
 import styles from "./components/styles.module.css";
+import ReceitasTable from "./components/ReceitasTable";
+
+
+
 
 export const LancamentoReceita = () => {
   return (
@@ -12,8 +16,8 @@ export const LancamentoReceita = () => {
       <div className={styles.body}>
         <FormularioReceita></FormularioReceita>
         <Graficos></Graficos>
-        <Table></Table>
       </div>
+      <ReceitasTable></ReceitasTable>
     </div>
   );
 };

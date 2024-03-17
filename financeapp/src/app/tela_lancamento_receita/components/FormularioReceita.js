@@ -10,6 +10,7 @@ import axios from "axios";
 
 
 export const FormularioReceita = () => {
+
   const [numeroUnico, setNumeroUnico] = useState("");
   const [naturezaReceita, setNaturezaReceita] = useState("null");
   const [formaPgto, setformaPgto] = useState("null");
@@ -22,7 +23,6 @@ export const FormularioReceita = () => {
   const buscarNaturezas = async () => {
     try {
       const resposta = await axios.get("http://localhost:4000/naturezas");
-      //console.log("Dados: " + resposta.data[0].descricao);
       setNaturezas(resposta.data);
     } catch (error) {
       console.log(error);
@@ -39,17 +39,47 @@ export const FormularioReceita = () => {
     }
   };
 
+  const salvarReceita = async () => {
+    try {
+      const novaReceita = {
+        numeroUnico,
+        naturezaReceita,
+        formaPgto,
+        descricao,
+        dtVencimento,
+        valor,
+      };
+
+      const response = await axios.post("http://localhost:4000/receitas", novaReceita, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      console.log(response.data);
+
+      // Limpar o formulário
+      setNumeroUnico('');
+      setNaturezaReceita('');
+      setFormasPgto('');
+      setDescricao('');
+      setDtvencimento('');
+      setValor('');
+    } catch (error) {
+      console.error("Erro ao salvar a receita:", error);
+
+    }
+  };
+
   useEffect(() => {
     buscarFormasPgto();
     buscarNaturezas();
   }, []);
 
-
   return (
     <div id="Formulario">
       <div className={styles.formConteiner}>
         <div className={styles.titulo}>
-          <h4>Lançameto de Receitas</h4>
+          <h4>Lançamento de Receitas</h4>
         </div>
         <div id="Numero" className={styles.formGroup}>
           <label>Número único: </label>
@@ -118,9 +148,10 @@ export const FormularioReceita = () => {
         </div>
 
         <div className={styles.button}>
-          <Button label="Lançar" />
+          <Button label="Lançar" onClick={salvarReceita} />
           <Button label="Limpar Campos" />
         </div>
+
       </div>
     </div>
   );

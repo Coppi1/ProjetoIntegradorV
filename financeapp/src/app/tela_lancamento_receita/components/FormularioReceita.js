@@ -16,19 +16,13 @@ export const FormularioReceita = () => {
   const [descricao, setDescricao] = useState("");
   const [dtVencimento, setDtvencimento] = useState("");
   const [valor, setValor] = useState();
-
-
-
-
-
   const [naturezas, setNaturezas] = useState([])
   const [formasPgto, setFormasPgto] = useState([])
 
   const buscarNaturezas = async () => {
     try {
       const resposta = await axios.get("http://localhost:4000/naturezas");
-      // console.log(resposta.data)
-      console.log("Dados: " + resposta.data[0].descricao);
+      //console.log("Dados: " + resposta.data[0].descricao);
       setNaturezas(resposta.data);
     } catch (error) {
       console.log(error);
@@ -38,8 +32,7 @@ export const FormularioReceita = () => {
   const buscarFormasPgto = async () => {
     try {
       const resposta = await axios.get("http://localhost:4000/formaPgto");
-      // console.log(resposta.data)
-      console.log("Dados: " + resposta.data[0].descricao);
+      //console.log("Dados: " + resposta.data[0].descricao);
       setFormasPgto(resposta.data);
     } catch (error) {
       console.log(error);
@@ -63,7 +56,7 @@ export const FormularioReceita = () => {
           <InputText
             value={numeroUnico}
             onChange={(e) => setNumeroUnico(e.target.value)}
-            readOnly="true"
+          //sreadOnly="true"
           />
           <br></br>
         </div>
@@ -77,7 +70,7 @@ export const FormularioReceita = () => {
           <br></br>
         </div>
 
-        <div id="SelecReceita" className={styles.formGroup}>
+        <div id="Natureza" className={styles.formGroup}>
           <label>Natureza da Receita: </label>
           <Dropdown
             value={naturezaReceita}
@@ -85,7 +78,7 @@ export const FormularioReceita = () => {
             options={naturezas}
             optionLabel="descricao"
             placeholder="Selecione a natureza"
-            className="w-full md:w-14rem"
+
           />
           <br></br>
         </div>
@@ -106,8 +99,8 @@ export const FormularioReceita = () => {
             value={valor}
             onValueChange={(e) => setValor(e.value)}
             mode="currency"
-            currency="USD"
-            locale="en-US"
+            currency="BRL"
+            locale="pt-BR"
           />
           <br></br>
         </div>

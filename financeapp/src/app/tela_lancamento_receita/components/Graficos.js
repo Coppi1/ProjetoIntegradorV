@@ -11,51 +11,28 @@ export const Graficos = () => {
   const [chartData, setChartData] = useState({})
   const [chartOptions, setChartOptions] = useState({})
   const [receitas, setReceitas] = useState([])
+  const [naturezas, setNaturezas] = useState([])
+  const [MapaNaturezas, setMapaNaturezas] = useState([])
 
   useEffect(() => {
     buscarReceitas();
-
-    // const Naturezas = buscarNaturezas()
-
-    // const receitasPorNatureza = receitas.reduce((acc, receita) => {
-    //   const index = acc.findIndex(item => item.id_natureza === receita.id_natureza);
-    //   if (index !== -1) {
-    //     acc[index].total += receita.valor;
-    //   } else {
-    //     acc.push({ id_natureza: receita.id_natureza, total: receita.valor });
-    //   }
-    //   return acc;
-    // }, []);
+    buscarNaturezas()
 
   }, []);
 
   useEffect(() => {
 
-    // const receitasPorNatureza = receitas.reduce((acc, receita) => {
-    //   const index = acc.findIndex(item => item.id_natureza === receita.id_natureza);
-    //   if (index !== -1) {
-    //     acc[index].total += receita.valor;
-    //   } else {
-    //     acc.push({ id_natureza: receita.id_natureza, total: receita.valor });
-    //   }
-    //   return acc;
-    // }, []);
+    const valorTotalPorNatureza = calcularValorTotalPorNatureza(receitas);
+    console.log(valorTotalPorNatureza)
 
-    // const descricaoNaturezas = receitasPorNatureza.map(receita => {
-    //   // Aqui você precisa obter a descrição da natureza com base no id_natureza
-    //   // Suponha que você tenha uma função para obter a descrição da natureza
-    //   // Vou chamar essa função de obterDescricaoNatureza
-    //   return obterDescricaoNatureza(receita.id_natureza);
-    // });
-
-    // const totalReceitas = receitasPorNatureza.map(receita => receita.total);
+    const labels = valorTotalPorNatureza.map(item => item.Natureza);
+    const valores = valorTotalPorNatureza.map(item => item["valor total"]);
 
     const data = {
-
-      labels: ['A', 'B', 'C'],
+      labels: labels,
       datasets: [
         {
-          data: [540, 325, 702],
+          data: valores,
           backgroundColor: [
             "rgba(255, 159, 64, 0.2)",
             "rgba(75, 192, 192, 0.2)",
@@ -89,21 +66,43 @@ export const Graficos = () => {
     try {
       const resposta = await axios.get("http://localhost:4000/receitas");
       setReceitas(resposta.data);
-      console.log(receitas)
+      console.log("Dados: " + resposta.data[0].descricao);
+      //console.log(receitas)
     } catch (error) {
       console.log(error);
     }
   };
 
-  const receitasPorNatureza = receitas.reduce((acc, receita) => {
-    const index = acc.findIndex(item => item.id_natureza === receita.id_natureza);
-    if (index !== -1) {
-      acc[index].total += receita.valor;
-    } else {
-      acc.push({ id_natureza: receita.id_natureza, total: receita.valor });
+  const buscarNaturezas = async () => {
+    try {
+      const resposta = await axios.get("http://localhost:4000/naturezas");
+      //console.log("Dados: " + resposta.data[0].descricao);
+      setNaturezas(resposta.data);
+    } catch (error) {
+      console.log(error);
     }
-    return acc;
-  }, []);
+  };
+
+  const calcularValorTotalPorNatureza = (receita) => {
+
+    //calculando o valor total por natureza
+    const valorTotalPorNatureza = receitas.reduce((acc, receita) => {
+      const { id_natureza, valor } = receita;
+      acc[id_natureza] = (acc[id_natureza] || 0) + valor;
+      return acc;
+    }, {});
+
+    // Mapeando o objeto resultante para array de objetos
+    const resultado = Object.entries(valorTotalPorNatureza).map(([id_natureza, valorTotal]) => {
+      const descricaoNatureza = naturezas.find(natureza => natureza.id === parseInt(id_natureza));
+      return {
+        Natureza: descricaoNatureza ? descricaoNatureza.descricao : "Natureza Desconhecida",
+        "valor total": valorTotal
+      };
+    });
+
+    return resultado;
+  };
 
   return (
     <div id="GraficoConteiner" className={styles.graficoConteiner}>

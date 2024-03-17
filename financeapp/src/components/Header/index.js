@@ -2,7 +2,6 @@ import React from 'react';
 import logo from './logo.png';
 import { Menubar } from 'primereact/menubar';
 import { useNavigate } from 'react-router-dom';
-
 import { Button } from 'primereact/button';
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
@@ -74,20 +73,6 @@ export const Header = () => {
         />
     );
 
-    // const end = [
-    //     {
-    //         label: 'Config',
-    //         icon: 'pi pi-fw pi-dollar',
-    //         items: [
-    //             {
-    //                 label: 'Opção 1',
-    //                 command: () => {
-    //                     console.log('Despesas Option 1 clicked');
-    //                 }
-    //             },]
-    //     }
-    // ]
-
     return (
 
         <div id='menubar' className="p-d-flex p-jc-between p-ai-center">
@@ -100,13 +85,12 @@ export const Header = () => {
                         <Button
                             label="Configurações"
                             icon="pi pi-cog"
-                            className="p-button-text"
+                            className="p-button-text" // deixa o fundo tranparente
                             onClick={() =>
-                                navigate('/configuracoes')
+                                null//navigate('/configuracoes')
                             }
                         />
                     </div>
-
                 }
             />
         </div>

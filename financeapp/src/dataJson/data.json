@@ -1,26 +1,26 @@
 {
   "naturezas": [
-    { "id": "1", "descricao": "Vendas" },
-    { "id": "2", "descricao": "Aplicações" },
-    { "id": "3", "descricao": "Serviços" },
-    { "id": "4", "descricao": "Emprestimos" },
-    { "id": "5", "descricao": "Salario" }
+    { "id": 1, "descricao": "Vendas" },
+    { "id": 2, "descricao": "Aplicações" },
+    { "id": 3, "descricao": "Serviços" },
+    { "id": 4, "descricao": "Emprestimos" },
+    { "id": 5, "descricao": "Salario" }
   ],
 
   "formaPgto": [
-    { "id": "1", "descricao": "Dinheiro" },
-    { "id": "2", "descricao": "Pix" },
-    { "id": "3", "descricao": "Boleto" },
-    { "id": "4", "descricao": "Transferência" },
-    { "id": "5", "descricao": "Cartão de Credito" },
-    { "id": "6", "descricao": "Cartão de Debito" },
-    { "id": "6", "descricao": "Outros" }
+    { "id": 1, "descricao": "Dinheiro" },
+    { "id": 2, "descricao": "Pix" },
+    { "id": 3, "descricao": "Boleto" },
+    { "id": 4, "descricao": "Transferência" },
+    { "id": 5, "descricao": "Cartão de Credito" },
+    { "id": 6, "descricao": "Cartão de Debito" },
+    { "id": 6, "descricao": "Outros" }
   ],
 
   "receitas": [
     {
       "id": 1,
-      "id_natureza": 1,
+      "id_natureza": 3,
       "id_formaPgto": 1,
       "descricao": "Venda de produtos A",
       "dtVencimento": "2024-03-20",
@@ -52,7 +52,7 @@
     },
     {
       "id": 5,
-      "id_natureza": 1,
+      "id_natureza": 3,
       "id_formaPgto": 1,
       "descricao": "Serviço prestado",
       "dtVencimento": "2024-03-17",

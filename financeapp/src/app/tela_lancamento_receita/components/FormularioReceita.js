@@ -85,7 +85,7 @@ export const FormularioReceita = () => {
           <InputText
             value={numeroUnico}
             onChange={(e) => setNumeroUnico(e.target.value)}
-            readOnly="true"
+          //sreadOnly="true"
           />
           <br></br>
         </div>
@@ -99,7 +99,7 @@ export const FormularioReceita = () => {
           <br></br>
         </div>
 
-        <div id="SelecReceita" className={styles.formGroup}>
+        <div id="Natureza" className={styles.formGroup}>
           <label>Natureza da Receita: </label>
           <Dropdown
             value={naturezaReceita}
@@ -107,7 +107,7 @@ export const FormularioReceita = () => {
             options={naturezas}
             optionLabel="descricao"
             placeholder="Selecione a natureza"
-            className="w-full md:w-14rem"
+
           />
           <br></br>
         </div>
@@ -128,8 +128,8 @@ export const FormularioReceita = () => {
             value={valor}
             onValueChange={(e) => setValor(e.value)}
             mode="currency"
-            currency="USD"
-            locale="en-US"
+            currency="BRL"
+            locale="pt-BR"
           />
           <br></br>
         </div>

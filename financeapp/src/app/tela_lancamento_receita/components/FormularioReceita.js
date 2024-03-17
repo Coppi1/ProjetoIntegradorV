@@ -7,57 +7,78 @@ import styles from "./styles.module.css";
 import { Button } from "primereact/button";
 import { InputTextarea } from "primereact/inputtextarea";
 import axios from "axios";
-import Receita from "../../../models/Receita/Receita";
 
 
 export const FormularioReceita = () => {
-  const [numeroUnico, setNumeroUnico] = useState("");
-  const [naturezaReceita, setNaturezaReceita] = useState("null");
-  const [formaPgto, setformaPgto] = useState("null");
-  const [descricao, setDescricao] = useState("");
-  const [dtVencimento, setDtvencimento] = useState("");
-  const [valor, setValor] = useState();
+ const [numeroUnico, setNumeroUnico] = useState("");
+ const [naturezaReceita, setNaturezaReceita] = useState("null");
+ const [descricao, setDescricao] = useState("");
+ const [dtVencimento, setDtVencimento] = useState(""); // Corrigido para setDtVencimento
+ const [formaPgto, setFormaPgto] = useState("null"); // Corrigido para setFormaPgto
+ const [valor, setValor] = useState();
+ const [naturezas, setNaturezas] = useState([]);
+ const [formasPgto, setFormasPgto] = useState([]);
 
 
-
-
-
-  const [naturezas, setNaturezas] = useState([])
-  const [formasPgto, setFormasPgto] = useState([])
-
-  const buscarNaturezas = async () => {
+ const buscarNaturezas = async () => {
     try {
       const resposta = await axios.get("http://localhost:4000/naturezas");
-      // console.log(resposta.data)
-      console.log("Dados: " + resposta.data[0].descricao);
       setNaturezas(resposta.data);
     } catch (error) {
       console.log(error);
     }
-  };
+ };
 
-  const buscarFormasPgto = async () => {
+ const buscarFormasPgto = async () => {
     try {
       const resposta = await axios.get("http://localhost:4000/formaPgto");
-      // console.log(resposta.data)
-      console.log("Dados: " + resposta.data[0].descricao);
       setFormasPgto(resposta.data);
     } catch (error) {
       console.log(error);
     }
-  };
+ };
 
-  useEffect(() => {
+ const salvarReceita = async () => {
+    try {
+      const novaReceita = {
+        numeroUnico,
+        naturezaReceita,
+        formaPgto,
+        descricao,
+        dtVencimento,
+        valor,
+      };
+
+      const response = await axios.post("http://localhost:4000/receitas", novaReceita, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      console.log(response.data);
+  
+      // Limpar o formulário
+      setNumeroUnico('');
+      setNaturezaReceita('');
+      setFormaPgto('');
+      setDescricao('');
+      setDtVencimento('');
+      setValor('');
+    } catch (error) {
+      console.error("Erro ao salvar a receita:", error);
+
+    }
+ };
+
+ useEffect(() => {
     buscarFormasPgto();
     buscarNaturezas();
-  }, []);
+ }, []);
 
-
-  return (
+ return (
     <div id="Formulario">
       <div className={styles.formConteiner}>
         <div className={styles.titulo}>
-          <h4>Lançameto de Receitas</h4>
+          <h4>Lançamento de Receitas</h4>
         </div>
         <div id="Numero" className={styles.formGroup}>
           <label>Número único: </label>
@@ -93,7 +114,7 @@ export const FormularioReceita = () => {
 
         <div id="DataVenc" className={styles.formGroup}>
           <label>Data de Vencimento:</label>
-          <Calendar value={dtVencimento} onChange={(e) => setDtvencimento(e.value)} />
+          <Calendar value={dtVencimento} onChange={(e) => setDtVencimento(e.value)} />
           <br></br>
         </div>
 
@@ -117,7 +138,7 @@ export const FormularioReceita = () => {
           <label>Forma de Pagamento:</label>
           <Dropdown
             value={formaPgto}
-            onChange={(e) => setformaPgto(e.value)}
+            onChange={(e) => setFormaPgto(e.value)}
             options={formasPgto}
             optionLabel="descricao"
             placeholder="Selecione a forma de pagamento"
@@ -126,10 +147,11 @@ export const FormularioReceita = () => {
         </div>
 
         <div className={styles.button}>
-          <Button label="Lançar" />
+          <Button label="Lançar" onClick={salvarReceita} />
           <Button label="Limpar Campos" />
         </div>
+
       </div>
     </div>
-  );
+ );
 };

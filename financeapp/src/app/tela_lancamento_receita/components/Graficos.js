@@ -6,6 +6,8 @@ import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
 import axios from "axios";
 
+
+
 export const Graficos = () => {
   const [chartData, setChartData] = useState({})
   const [chartOptions, setChartOptions] = useState({})
@@ -15,13 +17,14 @@ export const Graficos = () => {
     buscarReceitas();
   }, []);
 
+
   useEffect(() => {
     const data = {
       labels: ["Q1", "Q2", "Q3", "Q4"],
       datasets: [
         {
           label: "Sales",
-          data: Object.values(receitasPorNatureza), // Usando Object.values para obter os valores do objeto receitasPorNatureza
+          data: Object.values(receitas), // Usando Object.values para obter os valores do objeto receitasPorNatureza
           backgroundColor: [
             "rgba(255, 159, 64, 0.2)",
             "rgba(75, 192, 192, 0.2)",

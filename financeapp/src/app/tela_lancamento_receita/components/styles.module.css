@@ -1,10 +1,10 @@
 * {
-  background-color: #121212; /* Cor de fundo escura, conforme recomendado */
-  color: #f5f5f5; /* Cor de texto branca para contraste */
+  /* background-color: #121212; Cor de fundo escura, conforme recomendado
+  color: #f5f5f5; Cor de texto branca para contraste */
   font-family: "Poppins", sans-serif;
- }
- 
- .body {
+}
+
+.body {
   font-weight: 300;
   font-size: medium;
   padding-top: 1%;
@@ -12,56 +12,56 @@
   grid-template-rows: auto;
   gap: 10px;
   grid-template-columns: repeat(2, 1fr);
- }
- 
- .formConteiner, .graficoConteiner {
+}
+
+.formConteiner,
+.graficoConteiner {
   display: grid;
   padding: 15px;
   border: 1px solid #333; /* Cor de borda mais clara para contraste */
   border-radius: 2%;
- }
- 
- .tableConteiner {
+}
+
+.tableConteiner {
   background-color: #222; /* Cor de fundo mais escura para contraste */
   display: flex;
   justify-content: center;
   align-items: center;
   grid-column: 1 / -1;
- }
- 
- .formGroup {
+}
+
+.formGroup {
   padding: 3px;
   padding-top: 5px;
   align-items: center;
   display: grid;
- }
- 
- .titulo {
+}
+
+.titulo {
   text-align: center;
   padding-bottom: 15px;
   text-transform: uppercase;
   font-size: large;
   font-weight: 500; /* Ajuste de peso da fonte para melhor legibilidade */
- }
- 
- .button {
+}
+
+.button {
   align-items: center;
   padding: 1px;
   padding-top: 15px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
- }
- 
- .graficoFilter {
+}
+
+.graficoFilter {
   display: grid;
- }
- 
- .grafico {
+}
+
+.grafico {
   padding-top: 15px;
   justify-self: center;
- }
-  
+}
 
 .DataTable {
   background-color: aquamarine;

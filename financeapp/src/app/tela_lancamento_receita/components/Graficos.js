@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./styles.module.css";
+import styles from "../styles/styles.module.css";
 import { Chart } from "primereact/chart";
 import { useState, useEffect } from "react";
 import { Dropdown } from "primereact/dropdown";
@@ -7,29 +7,24 @@ import { Button } from "primereact/button";
 import axios from "axios";
 // import buscarNaturezas from "./FormularioReceita"
 
-
-
 export const Graficos = () => {
-  const [chartData, setChartData] = useState({})
-  const [chartOptions, setChartOptions] = useState({})
-  const [receitas, setReceitas] = useState([])
-  const [naturezas, setNaturezas] = useState([])
-  const [MapaNaturezas, setMapaNaturezas] = useState([])
+  const [chartData, setChartData] = useState({});
+  const [chartOptions, setChartOptions] = useState({});
+  const [receitas, setReceitas] = useState([]);
+  const [naturezas, setNaturezas] = useState([]);
+  const [MapaNaturezas, setMapaNaturezas] = useState([]);
 
   useEffect(() => {
     buscarReceitas();
-    buscarNaturezas()
-
+    buscarNaturezas();
   }, []);
 
-
   useEffect(() => {
-
     const valorTotalPorNatureza = calcularValorTotalPorNatureza(receitas);
-    console.log(valorTotalPorNatureza)
+    console.log(valorTotalPorNatureza);
 
-    const labels = valorTotalPorNatureza.map(item => item.Natureza);
-    const valores = valorTotalPorNatureza.map(item => item["valor total"]);
+    const labels = valorTotalPorNatureza.map((item) => item.Natureza);
+    const valores = valorTotalPorNatureza.map((item) => item["valor total"]);
 
     const data = {
       labels: labels,
@@ -62,7 +57,6 @@ export const Graficos = () => {
 
     setChartData(data);
     setChartOptions(options);
-
   }, [receitas]); // [receitas] Atualiza o gráfico sempre que receitas mudar
 
   const buscarReceitas = async () => {
@@ -87,7 +81,6 @@ export const Graficos = () => {
   };
 
   const calcularValorTotalPorNatureza = (receita) => {
-
     //calculando o valor total por natureza
     const valorTotalPorNatureza = receitas.reduce((acc, receita) => {
       const { id_natureza, valor } = receita;
@@ -96,13 +89,19 @@ export const Graficos = () => {
     }, {});
 
     // Mapeando o objeto resultante para array de objetos
-    const resultado = Object.entries(valorTotalPorNatureza).map(([id_natureza, valorTotal]) => {
-      const descricaoNatureza = naturezas.find(natureza => natureza.id === parseInt(id_natureza));
-      return {
-        Natureza: descricaoNatureza ? descricaoNatureza.descricao : "Natureza Desconhecida",
-        "valor total": valorTotal
-      };
-    });
+    const resultado = Object.entries(valorTotalPorNatureza).map(
+      ([id_natureza, valorTotal]) => {
+        const descricaoNatureza = naturezas.find(
+          (natureza) => natureza.id === parseInt(id_natureza)
+        );
+        return {
+          Natureza: descricaoNatureza
+            ? descricaoNatureza.descricao
+            : "Natureza Desconhecida",
+          "valor total": valorTotal,
+        };
+      }
+    );
 
     return resultado;
   };

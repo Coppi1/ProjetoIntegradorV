@@ -3,22 +3,20 @@ import { InputText } from "primereact/inputtext";
 import { Calendar } from "primereact/calendar";
 import { Dropdown } from "primereact/dropdown";
 import { InputNumber } from "primereact/inputnumber";
-import styles from "./styles.module.css";
+import styles from "../styles/styles.module.css";
 import { Button } from "primereact/button";
 import { InputTextarea } from "primereact/inputtextarea";
-import axios from "axios";
-
+import axios, { Axios } from "axios";
 
 export const FormularioReceita = () => {
-
   const [numeroUnico, setNumeroUnico] = useState("");
   const [naturezaReceita, setNaturezaReceita] = useState("null");
   const [formaPgto, setformaPgto] = useState("null");
   const [descricao, setDescricao] = useState("");
   const [dtVencimento, setDtvencimento] = useState("");
   const [valor, setValor] = useState();
-  const [naturezas, setNaturezas] = useState([])
-  const [formasPgto, setFormasPgto] = useState([])
+  const [naturezas, setNaturezas] = useState([]);
+  const [formasPgto, setFormasPgto] = useState([]);
 
   const buscarNaturezas = async () => {
     try {
@@ -50,23 +48,26 @@ export const FormularioReceita = () => {
         valor,
       };
 
-      const response = await axios.post("http://localhost:4000/receitas", novaReceita, {
-        headers: {
-          'Content-Type': 'application/json'
+      const response = await axios.post(
+        "http://localhost:4000/receitas",
+        novaReceita,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
         }
-      });
+      );
       console.log(response.data);
 
       // Limpar o formulário
-      setNumeroUnico('');
-      setNaturezaReceita('');
-      setFormasPgto('');
-      setDescricao('');
-      setDtvencimento('');
-      setValor('');
+      setNumeroUnico("");
+      setNaturezaReceita("");
+      setFormasPgto("");
+      setDescricao("");
+      setDtvencimento("");
+      setValor("");
     } catch (error) {
       console.error("Erro ao salvar a receita:", error);
-
     }
   };
 
@@ -81,12 +82,12 @@ export const FormularioReceita = () => {
         <div className={styles.titulo}>
           <h4>Lançamento de Receitas</h4>
         </div>
-        <div id="Numero" className={styles.formGroup}>
+        <div id="numeroUnico" className={styles.formGroup}>
           <label>Número único: </label>
           <InputText
             value={numeroUnico}
             onChange={(e) => setNumeroUnico(e.target.value)}
-          //sreadOnly="true"
+            readOnly="true"
           />
           <br></br>
         </div>
@@ -94,6 +95,7 @@ export const FormularioReceita = () => {
         <div id="Desc" className={styles.formGroup}>
           <label>Descrição da Receita: </label>
           <InputTextarea
+            autoResize
             value={descricao}
             onChange={(e) => setDescricao(e.target.value)}
           />
@@ -108,20 +110,22 @@ export const FormularioReceita = () => {
             options={naturezas}
             optionLabel="descricao"
             placeholder="Selecione a natureza"
-
           />
           <br></br>
         </div>
 
         <div id="DataVenc" className={styles.formGroup}>
           <label>Data de Vencimento:</label>
-          <Calendar value={dtVencimento} onChange={(e) => setDtvencimento(e.value)} />
+          <Calendar
+            value={dtVencimento}
+            onChange={(e) => setDtvencimento(e.value)}
+          />
           <br></br>
         </div>
 
         <div id="Valor" className={styles.formGroup}>
           <label htmlFor="currency-us" className="font-bold block mb-2">
-            {" "}
+            {""}
             Valor:
           </label>
           <InputNumber
@@ -151,7 +155,6 @@ export const FormularioReceita = () => {
           <Button label="Lançar" onClick={salvarReceita} />
           <Button label="Limpar Campos" />
         </div>
-
       </div>
     </div>
   );

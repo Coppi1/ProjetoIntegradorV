@@ -1,0 +1,11 @@
+.conteiner {
+  width: 100%;
+  height: 100vh;
+  background-image: url("../guy-elevateFinance.png");
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: "center";
+  padding-right: "40%";
+}

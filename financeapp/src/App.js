@@ -5,14 +5,12 @@ import { DataTable } from "primereact/datatable";
 import ReceitasTable from "./app/tela_lancamento_receita/components/ReceitasTable";
 
 const App = () => {
-
-    return (
-        <div className="App">
-            <Header />
-            <GlobalStyle />
-            <ReceitasTable></ReceitasTable>
-        </div>
-    )
-}
+  return (
+    <div className="App">
+      <Header />
+      <ReceitasTable></ReceitasTable>
+    </div>
+  );
+};
 
 export default App;

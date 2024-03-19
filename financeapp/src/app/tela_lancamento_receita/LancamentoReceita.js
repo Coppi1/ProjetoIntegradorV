@@ -1,12 +1,9 @@
 import React from "react";
-import Header from "../../components/Header";
+import Header from "../../components/Header/Header";
 import { FormularioReceita } from "./components/FormularioReceita";
 import { Graficos } from "./components/Graficos";
-import styles from "./components/styles.module.css";
+import styles from "./styles/styles.module.css";
 import ReceitasTable from "./components/ReceitasTable";
-
-
-
 
 export const LancamentoReceita = () => {
   return (

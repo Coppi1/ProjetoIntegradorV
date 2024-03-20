@@ -29,7 +29,8 @@ export const Grafico = () => {
       labels: labels,
       datasets: [
         {
-          data: valores,
+          label: "Sales",
+          data: Object.values(receitas), // Usando Object.values para obter os valores do objeto receitasPorNatureza
           backgroundColor: [
             "rgba(255, 159, 64, 0.2)",
             "rgba(75, 192, 192, 0.2)",

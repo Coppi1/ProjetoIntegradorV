@@ -3,19 +3,31 @@ import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 import './login.css';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Login() {
-    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState('');
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
-    const handleLogin = () => {
-        if (username !== "" && password !== "") {
-            alert("Login realizado com sucesso!");
-        } else {
-            setError("Usuário ou senha inválidos");
+    const handleLogin = async () => {
+        if (email === "" || password === "") {
+            setError("Por favor, preencha todos os campos");
+            return;
+        }
+
+        try {
+            const response = await axios.get(`http://localhost:4000/cadastro?email=${email}&password=${password}`);
+            if (response.data.length === 0) {
+                setError("Usuário ou senha inválidos");
+            } else {
+                alert("Login realizado com sucesso!");
+            }
+        } catch (error) {
+            console.error('Erro ao verificar email cadastrado:', error);
+            alert("Erro ao verificar email cadastrado. Por favor, tente novamente mais tarde.");
         }
     }
 
@@ -27,7 +39,7 @@ function Login() {
         navigate('/cadastro');
     }
 
-    const handleForgotPassword = () => {
+    const handleForgotPassword = async () => {
         const email = prompt("Digite seu email para recuperação de senha:");
 
         if (!email) {
@@ -35,7 +47,17 @@ function Login() {
             return;
         }
 
-        alert(`Um email foi enviado para ${email} com as instruções para redefinição da senha.`);
+        try {
+            const response = await axios.get(`http://localhost:4000/cadastro?email=${email}`);
+            if (response.data.length === 0) {
+                alert("Email não cadastrado. Por favor, insira um email válido para recuperação de senha.");
+            } else {
+                alert(`Um email foi enviado para ${email} com as instruções para redefinição da senha.`);
+            }
+        } catch (error) {
+            console.error('Erro ao verificar email cadastrado:', error);
+            alert("Erro ao verificar email cadastrado. Por favor, tente novamente mais tarde.");
+        }
     }
 
     return (
@@ -60,13 +82,13 @@ function Login() {
                     <p className="titulo2">Ou acesse com seu email</p>
                 </div>
                 <div>
-                    <label className="label" htmlFor="username">Nome ou email:</label>
+                    <label className="label" htmlFor="email">Email:</label>
                     <input
                         className="input"
                         type="text"
-                        id="username"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        id="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
                 <div>

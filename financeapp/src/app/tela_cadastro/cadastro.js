@@ -3,6 +3,7 @@ import { Button } from 'primereact/button';
 import { Splitter, SplitterPanel } from 'primereact/splitter';
 import './cadastro.css';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Cadastro() {
     const [nome, setNome] = useState("");
@@ -14,11 +15,29 @@ function Cadastro() {
     const navigate = useNavigate();
 
     const handleCadastro = () => {
-        if (nome !== "" && email !== "" && password !== "" && repeatpassword !== "") {
-            alert("Cadastro realizado com sucesso");
-        } else {
+        if (nome === "" || email === "" || password === "" || repeatpassword === "") {
             setError("Por favor, preencha todos os campos");
+            return;
         }
+
+        const dadosDoForm = {
+            nome: nome,
+            email: email,
+            password: password
+        };
+
+        const incluirDados = async () => {
+            try {
+                const response = await axios.post('http://localhost:4000/cadastro', dadosDoForm);
+                console.log('Resposta da API:', response.data);
+                alert("Cadastro realizado com sucesso");
+            } catch (error) {
+                console.error('Erro ao enviar dados para a API:', error);
+            }
+        }
+
+        incluirDados();
+
     }
 
     const handleButtonClick = (serviceName) => {

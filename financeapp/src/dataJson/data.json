@@ -192,5 +192,55 @@
       "dtVencimento": "2024-03-19T03:00:00.000Z",
       "valor": 100000
     }
+  ],
+  "cadastro": [
+    {
+      "id": "b447",
+      "nome": "hetheth",
+      "email": "erhehe",
+      "password": "dbebeb"
+    },
+    {
+      "id": "0962",
+      "nome": "hetheth",
+      "email": "erhehe",
+      "password": "dbebeb"
+    },
+    {
+      "id": "6461",
+      "nome": "",
+      "email": "",
+      "password": ""
+    },
+    {
+      "id": "59f9",
+      "nome": "fdbdfbd",
+      "email": "dbdfbd",
+      "password": "bdfbdfb"
+    },
+    {
+      "id": "a63f",
+      "nome": "\\czx ",
+      "email": "z z",
+      "password": "svsbd"
+    },
+    {
+      "id": "d5a8",
+      "nome": "bbff",
+      "email": "fgnfgn",
+      "password": "fnfgngfn"
+    },
+    {
+      "id": "c4c1",
+      "nome": "teste",
+      "email": "teste",
+      "password": "123"
+    },
+    {
+      "id": "e32b",
+      "nome": "bbtndn",
+      "email": "nntdnrn",
+      "password": "nrhnn"
+    }
   ]
 }

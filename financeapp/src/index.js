@@ -8,18 +8,6 @@ import Cadastro from "./app/tela_cadastro/cadastro";
 import Login from "./app/tela_login/Login";
 import { LancamentoReceita } from "./app/tela_lancamento_receita/LancamentoReceita";
 
-
-// const router = createBrowserRouter([
-//     {
-//         path: "/",
-//         element: <Home />
-//     },
-//     {
-//         path: "LancamentoDespesa",
-//         element: <LancamentoDespesa />
-//     }
-// ]);
-
 const router = createBrowserRouter([
     {
         path: "/",

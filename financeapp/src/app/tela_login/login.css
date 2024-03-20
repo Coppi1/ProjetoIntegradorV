@@ -1,6 +1,6 @@
 .container {
-    background-image: url('https://st4.depositphotos.com/1907633/21218/i/450/depositphotos_212181688-stock-photo-investor-analyzing-stock-market-report.jpg');
-    background-size: cover; 
+    background-image: url('https://img.freepik.com/fotos-premium/dinheiro-crescimento-negocio-grafico-economia-financas-estoque-ou-moeda-investimento-diagrama-financeiro-grafico-de-lucro-de-acoes-de-precos-de-mercado-de-cambio-global-na-analise-economica-fundo-3d-com-comercio-de-sucesso_79161-2035.jpg?size=626&ext=jpg&ga=GA1.1.1395880969.1709424000&semt=sph');
+    background-size: cover;
     background-position: center;
     display: flex;
     justify-content: center;
@@ -13,8 +13,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    height: 80%;
+    width: 40%;
+    height: 85%;
     background-color: white;
 }
 
@@ -35,20 +35,30 @@
 
 .error {
     color: red;
-    text-align: center; 
+    text-align: center;
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
 }
 
 .buttoncontainer {
     display: flex;
-    justify-content: center; 
-    align-items: center; 
+    justify-content: center;
+    align-items: center;
 }
 
 .button {
     padding: 8px;
+    background-color: green;
+    color: #050505;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.button2 {
+    padding: 8px;
+    background-color: transparent;
     color: #050505;
     border: none;
     border-radius: 3px;
@@ -73,14 +83,14 @@
 
 .logocontainer {
     display: flex;
-    justify-content: center; 
-    align-items: center; 
+    justify-content: center;
+    align-items: center;
 }
 
 .logo {
-    display: inline-block ;
+    display: inline-block;
     margin: 0 10px;
-    width: 50px; 
+    width: 50px;
     height: 50px;
 }
 

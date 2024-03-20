@@ -7,12 +7,11 @@ import { Button } from "primereact/button";
 import axios from "axios";
 // import buscarNaturezas from "./FormularioReceita"
 
-export const Graficos = () => {
+export const Grafico = () => {
   const [chartData, setChartData] = useState({});
   const [chartOptions, setChartOptions] = useState({});
   const [receitas, setReceitas] = useState([]);
   const [naturezas, setNaturezas] = useState([]);
-  const [MapaNaturezas, setMapaNaturezas] = useState([]);
 
   useEffect(() => {
     buscarReceitas();
@@ -92,7 +91,7 @@ export const Graficos = () => {
     const resultado = Object.entries(valorTotalPorNatureza).map(
       ([id_natureza, valorTotal]) => {
         const descricaoNatureza = naturezas.find(
-          (natureza) => natureza.id === parseInt(id_natureza)
+          (natureza) => natureza.id == parseInt(id_natureza)
         );
         return {
           Natureza: descricaoNatureza

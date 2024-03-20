@@ -3,9 +3,7 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
-import { FilterMatchMode } from "primereact/api";
 import axios from "axios";
-import { Dialog } from "primereact/dialog";
 
 export default function ReceitasTable() {
   const [receitas, setReceitas] = useState([]);

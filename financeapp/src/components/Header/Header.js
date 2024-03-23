@@ -7,6 +7,7 @@ import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import styles from "./styles/styles.module.css";
+import global from "../../styles/global.module.css";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -73,21 +74,19 @@ export const Header = () => {
   );
 
   return (
-    <div id="menubar">
+    <div id="menubar" className={global.header}>
       <Menubar
         start={start}
         model={items}
         end={
-          <div>
-            <></>
+          <div id="end">
             <Button
               label="Configurações"
               icon="pi pi-cog"
-              className="p-button-text" // deixa o fundo tranparente
-              onClick={
-                () => null //navigate('/configuracoes')
-              }
+              className={styles.TransparentButton}
+              onClick={() => null} // quando pronta, colocar metodo navigate p/('/configuracoes')
             />
+            <Button className={styles.ButtonLogout}>Logout</Button>
           </div>
         }
       />

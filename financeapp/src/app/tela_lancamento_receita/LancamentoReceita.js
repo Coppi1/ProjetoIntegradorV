@@ -1,17 +1,20 @@
 import React from "react";
 import Header from "../../components/Header/Header";
 import { FormularioReceita } from "./components/FormularioReceita";
-import { Graficos } from "./components/Graficos";
+import { Grafico } from "./components/Grafico";
 import styles from "./styles/styles.module.css";
 import ReceitasTable from "./components/ReceitasTable";
+import global from "../../styles/global.module.css";
 
 export const LancamentoReceita = () => {
   return (
-    <div id="body">
-      <Header></Header>
+    <div id="Conteiner">
+      <div id="Header" className={global.header}>
+        <Header></Header>
+      </div>
       <div className={styles.body}>
         <FormularioReceita></FormularioReceita>
-        <Graficos></Graficos>
+        <Grafico></Grafico>
       </div>
       <ReceitasTable></ReceitasTable>
     </div>

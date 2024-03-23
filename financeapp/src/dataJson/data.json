@@ -52,85 +52,77 @@
     }
   ],
   "receitas": [
+    
     {
-      "id": "1",
-      "id_natureza": 1,
-      "id_formaPgto": 1,
-      "descricao": "Venda de produtos A",
-      "dtVencimento": "2024-03-20",
-      "valor": 1500
+      "id": "749a",
+      "numeroUnico": "",
+      "naturezaReceita": {
+        "id": "4",
+        "descricao": "Emprestimos"
+      },
+      "formaPgto": {
+        "id": "1",
+        "descricao": "Dinheiro"
+      },
+      "descricao": "gggg",
+      "dtVencimento": "2024-03-20T03:00:00.000Z",
+      "valor": 1000
+    }
+  ],
+  "cadastro": [
+    {
+      "id": "b447",
+      "nome": "hetheth",
+      "email": "erhehe",
+      "password": "dbebeb"
     },
     {
-      "id": "2",
-      "id_natureza": 2,
-      "id_formaPgto": 2,
-      "descricao": "Rendimento Aplicação Sicredi",
-      "dtVencimento": "2024-03-18",
-      "valor": 2000
+      "id": "0962",
+      "nome": "hetheth",
+      "email": "erhehe",
+      "password": "dbebeb"
     },
     {
-      "id": "3",
-      "id_natureza": 1,
-      "id_formaPgto": 1,
-      "descricao": "Serviço  prestado",
-      "dtVencimento": "2024-03-25",
-      "valor": 1800
+      "id": "6461",
+      "nome": "",
+      "email": "",
+      "password": ""
     },
     {
-      "id": "4",
-      "id_natureza": 2,
-      "id_formaPgto": 4,
-      "descricao": "Serviço prestado",
-      "dtVencimento": "2024-03-22",
-      "valor": 300
+      "id": "59f9",
+      "nome": "fdbdfbd",
+      "email": "dbdfbd",
+      "password": "bdfbdfb"
     },
     {
-      "id": "5",
-      "id_natureza": 1,
-      "id_formaPgto": 1,
-      "descricao": "Serviço prestado",
-      "dtVencimento": "2024-03-17",
-      "valor": 500
+      "id": "a63f",
+      "nome": "\\czx ",
+      "email": "z z",
+      "password": "svsbd"
     },
     {
-      "id": "6",
-      "id_natureza": 2,
-      "id_formaPgto": 6,
-      "descricao": "Rendimento Aplicação Nubank",
-      "dtVencimento": "2024-03-21",
-      "valor": 3
+      "id": "d5a8",
+      "nome": "bbff",
+      "email": "fgnfgn",
+      "password": "fnfgngfn"
     },
     {
-      "id": "7",
-      "id_natureza": 1,
-      "id_formaPgto": 6,
-      "descricao": "Rendimentos Aplicação Caixa",
-      "dtVencimento": "2024-03-19",
-      "valor": 2.5
+      "id": "c4c1",
+      "nome": "teste",
+      "email": "teste",
+      "password": "123"
     },
     {
-      "id": "8",
-      "id_natureza": 2,
-      "id_formaPgto": 6,
-      "descricao": "Rendimento Aplicação Sicredi",
-      "dtVencimento": "2024-03-24",
-      "valor": 10.1
+      "id": "e32b",
+      "nome": "bbtndn",
+      "email": "nntdnrn",
+      "password": "nrhnn"
     },
     {
-      "id": "9",
-      "id_natureza": 1,
-      "id_formaPgto": 1,
-      "descricao": "Venda de livros",
-      "dtVencimento": "2024-03-23",
-      "valor": 250
-    },
-    {
-      "id": "10",
-      "id_natureza": 2,
-      "id_formaPgto": 1,
-      "descricao": "Salario A",
-      "dtVencimento": "2024-03-16",
-      "valor": 2750
+      "id": "06b8",
+      "nome": "tes",
+      "email": "raphaelaml1@outlook.com",
+      "password": "11"
     }
   ]
 }

@@ -9,6 +9,7 @@ import { Dialog } from "primereact/dialog";
 
 export default function ReceitasTable() {
   const [receitas, setReceitas] = useState([]);
+  const [naturezas, setNaturezas] = useState([]);
   const [globalFilter, setGlobalFilter] = useState("");
   const [dialogVisible, setDialogVisible] = useState(false);
   const [receitaEditada, setReceitaEditada] = useState(null);
@@ -18,6 +19,7 @@ export default function ReceitasTable() {
       .get("http://localhost:4000/receitas")
       .then((response) => {
         setReceitas(response.data);
+        setNaturezas(response.data)
       })
       .catch((error) => {
         console.error("Erro ao buscar receitas:", error);
@@ -62,12 +64,9 @@ export default function ReceitasTable() {
         rows={10}
         emptyMessage="Nenhuma receita encontrada"
       >
-        <Column field="numeroUnico" header="Número Único" />
+        <Column field="id" header="Número Único" />
         <Column field="descricao" header="Descrição da Receita" />
-        <Column
-          field="naturezaReceita.descricao"
-          header="Natureza da Receita"
-        />
+        <Column field="naturezaReceita.descricao" header="Natureza da Receita" />
         <Column field="dtVencimento" header="Data de Vencimento" />
         <Column field="valor" header="Valor" />
         <Column body={renderEditButton} header="Ações" />

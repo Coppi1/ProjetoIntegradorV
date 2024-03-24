@@ -4,7 +4,8 @@ import { InputText } from "primereact/inputtext";
 import { useNavigate } from "react-router-dom";
 import styles from "./styles/styles.module.css";
 import { Header } from "./components/Header";
-import { Footer } from "./components/Footer";
+import  Footer  from "./components/Footer";
+
 
 export const Inicio = () => {
 
@@ -19,7 +20,7 @@ export const Inicio = () => {
         <div className={styles.body}>
 
           <div className={styles.content}>
-            <h3>
+            <h3 id="titulo-h3">
               Venha para Elevate Finance e tenha o melhor controle para o seu
               dinheiro!
             </h3>
@@ -32,7 +33,7 @@ export const Inicio = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-              <Button type="submit" label="Cadastrar" />
+              <Button type="submit" label="Inscreva-se" />
             </form>
           </div>
 

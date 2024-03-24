@@ -33,10 +33,6 @@ const router = createBrowserRouter([
     path: "Cadastro",
     element: <Cadastro />,
   },
-  {
-    path: "Inicio",
-    element: <Inicio />,
-  },
 ]);
 
 createRoot(document.getElementById("root")).render(

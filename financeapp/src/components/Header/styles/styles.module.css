@@ -2,10 +2,10 @@
   background: #ff4136;
   color: white;
   border: none;
-  padding: 10px 20px;
+
   cursor: pointer;
   font-size: 16px;
-  margin-left: 50px;
+
   border-radius: 5px;
   transition: all 0.3s ease;
   &:hover {
@@ -31,5 +31,6 @@
 }
 
 .RightComponents {
-  display: flex;
+  float: right;
+  align-items: end;
 }

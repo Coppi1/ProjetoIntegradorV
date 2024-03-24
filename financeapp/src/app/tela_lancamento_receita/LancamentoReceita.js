@@ -8,7 +8,7 @@ import global from "../../styles/global.module.css";
 
 export const LancamentoReceita = () => {
   return (<>
-    <div id="Header" className={global.header}>
+    <div id="Header">
       <Header></Header>
     </div>
     <div className={styles.body}>

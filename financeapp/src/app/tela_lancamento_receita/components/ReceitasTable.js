@@ -42,16 +42,16 @@ export default function ReceitasTable() {
   return (
     <div id="DataTable" className="DataTable">
       <div className="p-d-flex p-jc-between p-mb-2">
-        <div className="p-d-flex p-ai-center">
-          <span className="p-input-icon-left">
-            <i className="pi pi-search" />
-            <InputText
-              value={globalFilter}
-              onChange={(e) => setGlobalFilter(e.target.value)}
-              placeholder="Pesquisar por nome"
-            />
-          </span>
-        </div>
+
+        <span className="p-input-icon-left">
+          <i className="pi pi-search" />
+          <InputText
+            value={globalFilter}
+            onChange={(e) => setGlobalFilter(e.target.value)}
+            placeholder="Pesquisar por nome"
+          />
+        </span>
+
       </div>
       <DataTable
         className="custom-data-table"

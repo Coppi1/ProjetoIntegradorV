@@ -4,7 +4,7 @@ import { InputText } from "primereact/inputtext";
 import { useNavigate } from "react-router-dom";
 import styles from "./styles/styles.module.css";
 import { Header } from "./components/Header";
-import  Footer  from "./components/Footer";
+import Footer from "./components/Footer";
 
 
 export const Inicio = () => {

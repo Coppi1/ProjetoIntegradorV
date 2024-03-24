@@ -52,10 +52,8 @@
     }
   ],
   "receitas": [
-    
     {
       "id": "749a",
-      "numeroUnico": "",
       "naturezaReceita": {
         "id": "4",
         "descricao": "Emprestimos"
@@ -64,9 +62,51 @@
         "id": "1",
         "descricao": "Dinheiro"
       },
-      "descricao": "gggg",
+      "descricao": "Empréstimo pessoal",
       "dtVencimento": "2024-03-20T03:00:00.000Z",
       "valor": 1000
+    },
+    {
+      "id": "b2c8",
+      "naturezaReceita": {
+        "id": "2",
+        "descricao": "Aplicações"
+      },
+      "formaPgto": {
+        "id": "4",
+        "descricao": "Transferência"
+      },
+      "descricao": "Rendimento de investimentos",
+      "dtVencimento": "2024-04-10T03:00:00.000Z",
+      "valor": 500
+    },
+    {
+      "id": "d5e6",
+      "naturezaReceita": {
+        "id": "1",
+        "descricao": "Vendas"
+      },
+      "formaPgto": {
+        "id": "5",
+        "descricao": "Cartão de Credito"
+      },
+      "descricao": "Venda de produtos eletrônicos",
+      "dtVencimento": "2024-04-15T03:00:00.000Z",
+      "valor": 2000
+    },
+    {
+      "id": "f9a1",
+      "naturezaReceita": {
+        "id": "3",
+        "descricao": "Serviços"
+      },
+      "formaPgto": {
+        "id": "2",
+        "descricao": "Pix"
+      },
+      "descricao": "Pagamento por consultoria",
+      "dtVencimento": "2024-04-25T03:00:00.000Z",
+      "valor": 1200
     }
   ],
   "cadastro": [

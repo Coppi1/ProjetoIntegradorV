@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./logo.png";
+import logo from "./assets/logo.png";
 import { Menubar } from "primereact/menubar";
 import { useNavigate } from "react-router-dom";
 import { Button } from "primereact/button";
@@ -7,20 +7,18 @@ import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import styles from "./styles/styles.module.css";
-import global from "../../styles/global.module.css";
-import { Badge } from "primereact/badge";
 
 export const Header = () => {
   const navigate = useNavigate();
 
-  const itemRenderer = (item) => (
-    <a className="flex align-items-center p-menuitem-link">
-      <span className={item.icon} />
-      <span className="mx-2">{item.label}</span>
-      {item.badge && <Badge className="ml-auto" value={item.badge} />}
-      {item.shortcut && <span className="ml-auto border-1 surface-border border-round surface-100 text-xs p-1">{item.shortcut}</span>}
-    </a>
-  );
+  // const itemRenderer = (item) => (
+  //   <a className={styles.conteiner}>
+  //     <span className={item.icon} />
+  //     <span className="mx-2">{item.label}</span>
+  //     {item.badge && <Badge className="ml-auto" value={item.badge} />}
+  //     {item.shortcut && <span className="ml-auto border-1 surface-border border-round surface-100 text-xs p-1">{item.shortcut}</span>}
+  //   </a>
+  // );
 
   const items = [
     {
@@ -100,7 +98,7 @@ export const Header = () => {
 
   return (
     <div id="card">
-      <Menubar
+      <Menubar style={styles.conteiner}
         start={start}
         model={items}
         end={end}

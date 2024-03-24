@@ -1,27 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 import './login.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Messages } from 'primereact/messages';
 
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState('');
-    const [error, setError] = useState("");
     const navigate = useNavigate();
+    const msgs = useRef(null);
 
     const handleLogin = async () => {
         if (email === "" || password === "") {
-            setError("Por favor, preencha todos os campos");
+            msgs.current.show({ sticky: true, severity: 'error', summary: '', detail: 'Por favor, preencha todos os campos', closable: true });
             return;
         }
 
         try {
             const response = await axios.get(`http://localhost:4000/cadastro?email=${email}&password=${password}`);
             if (response.data.length === 0) {
-                setError("Usuário ou senha inválidos");
+                msgs.current.show({ sticky: true, severity: 'error', summary: '', detail: 'Usuário ou senha inválidos', closable: true });
             } else {
                 alert("Login realizado com sucesso!");
             }
@@ -32,7 +33,7 @@ function Login() {
     }
 
     const handleButtonClick = (serviceName) => {
-        setMessage(`Login efetuado com sucesso ${serviceName}!`);
+        alert(`Cadastro efetuado com sucesso ${serviceName}!`);
     }
 
     const handleCadastroClick = () => {
@@ -108,7 +109,7 @@ function Login() {
                 <div className="buttoncontainer">
                     <Button className="button" onClick={handleLogin}>Login</Button>
                 </div>
-                {error && <p className="error">{error}</p>}
+                <Messages ref={msgs} />
             </Card>
         </div>
     );

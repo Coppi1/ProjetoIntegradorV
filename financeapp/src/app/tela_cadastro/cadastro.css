@@ -1,5 +1,4 @@
 .container {
-    background-image: url('https://img.freepik.com/fotos-premium/dinheiro-crescimento-negocio-grafico-economia-financas-estoque-ou-moeda-investimento-diagrama-financeiro-grafico-de-lucro-de-acoes-de-precos-de-mercado-de-cambio-global-na-analise-economica-fundo-3d-com-comercio-de-sucesso_79161-2035.jpg?size=626&ext=jpg&ga=GA1.1.1395880969.1709424000&semt=sph');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -14,7 +13,7 @@
 }
 
 .splitter-panel1 {
-    background-image: url('https://img.freepik.com/fotos-premium/dinheiro-crescimento-negocio-grafico-economia-financas-estoque-ou-moeda-investimento-diagrama-financeiro-grafico-de-lucro-de-acoes-de-precos-de-mercado-de-cambio-global-na-analise-economica-fundo-3d-com-comercio-de-sucesso_79161-2035.jpg?size=626&ext=jpg&ga=GA1.1.1395880969.1709424000&semt=sph');
+    background-image: url('https://www.vivendodefreela.com.br/wp-content/uploads/2019/06/finan%C3%A7as-para-aut%C3%B4nomos.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -42,7 +41,7 @@
     margin-bottom: 10px;
     padding: 5px;
     width: 500px;
-    background-color: rgb(176, 240, 176);
+    background-color: rgb(148, 192, 255);
     color: black;
 }
 
@@ -54,7 +53,7 @@
 
 .button {
     padding: 8px;
-    background-color: green;
+    background-color: rgb(78, 78, 255);
     color: #050505;
     border: none;
     border-radius: 3px;
@@ -72,13 +71,13 @@
 .titulo {
     text-align: center;
     font-size: 50px;
-    color: green;
+    color: rgb(78, 78, 255);
 }
 
 .titulo2 {
     text-align: center;
     font-size: 17px;
-    color: green;
+    color: rgb(78, 78, 255);
 }
 
 .titulo3 {

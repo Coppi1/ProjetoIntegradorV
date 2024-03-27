@@ -66,7 +66,7 @@ function Login() {
             <Card className="card">
                 <div className="buttoncontainer">
                     <Button className="logobutton" onClick={handleCadastroClick}>
-                        <img className="logo" src="https://cdn.pixabay.com/photo/2016/12/14/10/39/button-1905961_1280.png" alt=""></img>
+                        <img className="logo" src="https://st3.depositphotos.com/1688079/16329/i/450/depositphotos_163295012-stock-photo-back-arrow-icon-elegant-blue.jpg" alt=""></img>
                     </Button>
                 </div>
                 <h1 className="titulo">Faça o login</h1>

@@ -143,7 +143,7 @@ function Cadastro() {
                     <Messages ref={msgs} />
                 </SplitterPanel>
             </Splitter>
-        </div>
+        </div >
     );
 }
 

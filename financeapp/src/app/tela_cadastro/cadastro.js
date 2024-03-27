@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Button } from 'primereact/button';
 import { Splitter, SplitterPanel } from 'primereact/splitter';
 import './cadastro.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Messages } from 'primereact/messages';
 
 function Cadastro() {
     const [nome, setNome] = useState("");
@@ -11,12 +12,23 @@ function Cadastro() {
     const [password, setPassword] = useState("");
     const [repeatpassword, setRepeatPassword] = useState("");
     const [message, setMessage] = useState('');
-    const [error, setError] = useState("");
     const navigate = useNavigate();
+    const msgs = useRef(null);
 
-    const handleCadastro = () => {
+    const handleCadastro = async () => {
         if (nome === "" || email === "" || password === "" || repeatpassword === "") {
-            setError("Por favor, preencha todos os campos");
+            msgs.current.show({ sticky: true, severity: 'error', summary: '', detail: 'Por favor, preencha todos os campos', closable: true });
+            return;
+        }
+
+        const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
+        if (!emailRegex.test(email)) {
+            msgs.current.show({ sticky: true, severity: 'error', summary: '', detail: 'Email inválido', closable: true });
+            return;
+        }
+
+        if (password !== repeatpassword) {
+            msgs.current.show({ sticky: true, severity: 'error', summary: '', detail: 'As senhas não coincidem', closable: true });
             return;
         }
 
@@ -26,22 +38,32 @@ function Cadastro() {
             password: password
         };
 
-        const incluirDados = async () => {
-            try {
-                const response = await axios.post('http://localhost:4000/cadastro', dadosDoForm);
-                console.log('Resposta da API:', response.data);
-                alert("Cadastro realizado com sucesso");
-            } catch (error) {
-                console.error('Erro ao enviar dados para a API:', error);
+        try {
+            const response = await axios.get(`http://localhost:4000/cadastro?email=${email}`);
+            if (response.data.length > 0) {
+                msgs.current.show({ sticky: true, severity: 'error', summary: '', detail: 'Este e-mail já está cadastrado', closable: true });
+                return;
             }
+
+            const incluirDados = async () => {
+                try {
+                    const response = await axios.post('http://localhost:4000/cadastro', dadosDoForm);
+                    console.log('Resposta da API:', response.data);
+                    alert("Cadastro realizado com sucesso");
+                } catch (error) {
+                    console.error('Erro ao enviar dados para a API:', error);
+                }
+            }
+
+            incluirDados();
+
+        } catch (error) {
+            console.error('Erro ao verificar e-mail na API:', error);
         }
-
-        incluirDados();
-
     }
 
-    const handleButtonClick = (serviceName) => {
-        setMessage(`Cadastro efetuado com sucesso ${serviceName}!`);
+    const handleButtonClick = async (serviceName) => {
+        alert(`Cadastro efetuado com sucesso ${serviceName}!`);
     }
 
     const handleLoginButtonClick = () => {
@@ -52,7 +74,7 @@ function Cadastro() {
         <div className="container">
             <Splitter className="splitter">
                 <SplitterPanel size={50} className="splitter-panel1">
-                    <h1 className="titulo3">Bem-Vindo de volta!</h1>
+                    <h1 className="titulo3">Bem-Vindo!</h1>
                     <div>
                         <p className="frase">Para se manter conectado conosco, faça login com suas informações pessoais</p>
                     </div>
@@ -118,10 +140,10 @@ function Cadastro() {
                     <div className="buttoncontainer">
                         <Button onClick={handleCadastro} className="button">Cadastrar</Button>
                     </div>
-                    {error && <p className="error">{error}</p>}
+                    <Messages ref={msgs} />
                 </SplitterPanel>
             </Splitter>
-        </div>
+        </div >
     );
 }
 

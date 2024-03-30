@@ -3,6 +3,7 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
+import styles from "../styles/styles.module.css";
 import axios from "axios";
 
 export default function ReceitasTable() {
@@ -40,7 +41,7 @@ export default function ReceitasTable() {
   };
 
   return (
-    <div id="DataTable" className="DataTable">
+    <div id="DataTable" className={styles.tableConteiner}>
       <div className="p-d-flex p-jc-between p-mb-2">
 
         <span className="p-input-icon-left">

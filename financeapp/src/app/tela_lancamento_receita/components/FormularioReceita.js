@@ -9,7 +9,7 @@ import { InputTextarea } from "primereact/inputtextarea";
 import axios, { Axios } from "axios";
 
 export const FormularioReceita = () => {
-  const [id, setNumeroUnico] = useState("");
+  const [numeroUnico, setNumeroUnico] = useState("");
   const [naturezaReceita, setNaturezaReceita] = useState("null");
   const [formaPgto, setformaPgto] = useState("null");
   const [descricao, setDescricao] = useState("");
@@ -40,7 +40,7 @@ export const FormularioReceita = () => {
   const salvarReceita = async () => {
     try {
       const novaReceita = {
-        id,
+        numeroUnico,
         naturezaReceita,
         formaPgto,
         descricao,
@@ -82,10 +82,10 @@ export const FormularioReceita = () => {
         <div className={styles.titulo}>
           <h4>Lançamento de Receitas</h4>
         </div>
-        <div id="id" className={styles.formGroup}>
+        <div id="numeroUnico" className={styles.formGroup}>
           <label>Número único: </label>
           <InputText
-            value={id}
+            value={numeroUnico}
             onChange={(e) => setNumeroUnico(e.target.value)}
             readOnly="true"
           />

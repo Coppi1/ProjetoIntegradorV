@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 15px;
   margin: -8px;
 }
 
@@ -13,40 +12,66 @@
   background-position: center;
   background-size: cover;
   padding-top: 15%;
-  padding-left: 2%;
+  padding-left: 10%;
 }
 .content {
+  display: flex;
+  flex-direction: column;
   text-align: justify;
   max-width: 40%;
-  padding: 10px;
+  padding: 60px;
   border-radius: 10px;
-  background-color: rgba(241, 241, 243, 0.5); /* Cor azul com transparência */
+  background-color: rgba(255, 255, 255, 0.219); /* Cor azul com transparência */
   background-blend-mode: multiply; /* Mistura a cor de fundo com a imagem de fundo */
 }
 
-#titulo-h3 {
-  margin: 0; /* Garante que não haja margem externa */
-  padding: 0; /* Garante que não haja preenchimento */
+.form {
+  display: flex;
+  flex-direction: column;
 }
 
 .header {
-  background-color: #3b8fbf;
-  padding: auto;
+  background-color: #a1c9ec;
+  margin: -8px;
+}
+
+.btIniciarSessao {
+  background: transparent;
+  border: none;
+  color: black;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  &:hover {
+    /* background: rgba(255, 255, 255, 0.1); Fundo sutil ao passar o mouse */
+    color: #0000008f; /* Mantém a cor do texto */
+    border-radius: 5px; /* Adiciona bordas arredondadas ao destaque */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Efeito de destaque ao redor do texto */
+  }
 }
 
 .inputText {
-  width: 80%; /* Faz com que o campo de entrada ocupe toda a largura disponível */
-  padding-right: 5%; /* Mantém o preenchimento original */
+  width: 100%; /* Faz com que o campo de entrada ocupe toda a largura disponível */
+}
+
+.btIncrevase {
+  padding-top: 10px;
+  width: 60%;
 }
 
 .footer {
-  background-color: #3b8fbf;
-  color: white;
+  background-color: #a1c9ec;
+  color: rgb(0, 0, 0);
   padding: 1.5rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .footerContainer {
@@ -61,13 +86,17 @@
   text-align: left;
 }
 
-.footerText h2 {
-  font-size: 1.125rem;
-  font-weight: bold;
-}
-
 .footerText p {
   font-size: 0.875rem;
+  width: fit-content;
+  text-decoration: underline;
+  &:hover {
+    /* background: rgba(255, 255, 255, 0.1); Fundo sutil ao passar o mouse */
+    color: #0000008f; /* Mantém a cor do texto */
+    border-radius: 5px; /* Adiciona bordas arredondadas ao destaque */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Efeito de destaque ao redor do texto */
+    cursor: pointer;
+  }
 }
 
 .footerIcons {
@@ -78,4 +107,11 @@
 .footerIcons a {
   color: white;
   text-decoration: none;
+  &:hover {
+    /* background: rgba(255, 255, 255, 0.1); Fundo sutil ao passar o mouse */
+    color: #0000008f; /* Mantém a cor do texto */
+    border-radius: 5px; /* Adiciona bordas arredondadas ao destaque */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Efeito de destaque ao redor do texto */
+    cursor: pointer;
+  }
 }

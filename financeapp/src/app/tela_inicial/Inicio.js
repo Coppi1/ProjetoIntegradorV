@@ -33,7 +33,9 @@ export const Inicio = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-              <Button type="submit" label="Inscreva-se" />
+              <div className={styles.btIncrevase}>
+                <Button type="submit" label="Inscreva-se" />
+              </div>
             </form>
           </div>
 

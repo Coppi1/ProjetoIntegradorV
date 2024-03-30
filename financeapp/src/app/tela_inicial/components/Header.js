@@ -20,20 +20,22 @@ export const Header = () => {
         />
     );
 
+    const end = (
+        <div className={styles.btIniciarSessao}>
+            <Button
+                label="Iniciar Sessão"
+                icon="pi pi-sign-in"
+                className={styles.btIniciarSessao}   //"p-button-text"
+                onClick={() => navigate("/Login")}
+            />
+        </div>
+    )
+
     return (
         <div>
             <Menubar className={styles.header}
                 start={start}
-                end={
-                    <div>
-                        <Button
-                            label="Iniciar Sessão"
-                            icon="pi pi-sign-in"
-                            className="p-button-text"
-                            onClick={() => navigate("/Login")}
-                        />
-                    </div>
-                }
+                end={end}
             />
         </div>
     )

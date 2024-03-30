@@ -91,14 +91,16 @@ export const Header = () => {
         className={styles.TransparentButton}
         onClick={() => null} // quando pronta, colocar metodo navigate p/('/configuracoes')
       />
-      <Button className={styles.ButtonLogout}>Logout</Button>
+      <div className={styles.RghCompPadding}>
+        <Button className={styles.ButtonLogout}>Logout</Button>
+      </div>
     </div>
 
   )
 
   return (
     <div id="card">
-      <Menubar style={styles.conteiner}
+      <Menubar className={styles.header}
         start={start}
         model={items}
         end={end}

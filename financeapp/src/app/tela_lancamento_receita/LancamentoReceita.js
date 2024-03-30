@@ -15,7 +15,9 @@ export const LancamentoReceita = () => {
       <FormularioReceita></FormularioReceita>
       <Grafico></Grafico>
     </div>
-    <ReceitasTable></ReceitasTable>
+    <div className={styles.bodyTable}>
+      <ReceitasTable></ReceitasTable>
+    </div>
   </>
   );
 };

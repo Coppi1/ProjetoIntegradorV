@@ -5,6 +5,8 @@ import './login.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Messages } from 'primereact/messages';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -83,7 +85,8 @@ function Login() {
                     <p className="titulo2">Ou acesse com seu email</p>
                 </div>
                 <div>
-                    <label className="label" htmlFor="email">Email:</label>
+                    <label className="label" htmlFor="email">
+                        <FontAwesomeIcon icon={faEnvelope} className="icon-spacing" /> Email:</label>
                     <input
                         className="input"
                         type="text"
@@ -93,7 +96,8 @@ function Login() {
                     />
                 </div>
                 <div>
-                    <label className="label" htmlFor="password">Senha:</label>
+                    <label className="label" htmlFor="password">
+                        <FontAwesomeIcon icon={faLock} className="icon-spacing" />Senha:</label>
                     <input
                         className="input"
                         type="password"

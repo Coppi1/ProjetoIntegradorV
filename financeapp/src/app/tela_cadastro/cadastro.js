@@ -5,6 +5,8 @@ import './cadastro.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Messages } from 'primereact/messages';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 
 function Cadastro() {
     const [nome, setNome] = useState("");
@@ -98,7 +100,8 @@ function Cadastro() {
                         <p className="titulo2">Ou entre com seu email</p>
                     </div>
                     <div>
-                        <label htmlFor="nome" className="label">Nome completo:</label>
+                        <label htmlFor="nome" className="label">
+                            <FontAwesomeIcon icon={faUser} className="icon-spacing" /> Nome completo:</label>
                         <input
                             type="text"
                             id="nome"
@@ -108,7 +111,8 @@ function Cadastro() {
                         />
                     </div>
                     <div>
-                        <label htmlFor="email" className="label">Email:</label>
+                        <label htmlFor="email" className="label">
+                            <FontAwesomeIcon icon={faEnvelope} className="icon-spacing" /> Email:</label>
                         <input
                             type="email"
                             id="email"
@@ -118,7 +122,8 @@ function Cadastro() {
                         />
                     </div>
                     <div>
-                        <label htmlFor="password" className="label">Senha:</label>
+                        <label htmlFor="password" className="label">
+                            <FontAwesomeIcon icon={faLock} className="icon-spacing" /> Senha:</label>
                         <input
                             type="password"
                             id="password"
@@ -128,7 +133,8 @@ function Cadastro() {
                         />
                     </div>
                     <div>
-                        <label htmlFor="repeatpassword" className="label">Repita a senha:</label>
+                        <label htmlFor="repeatpassword" className="label">
+                            <FontAwesomeIcon icon={faLock} className="icon-spacing" /> Repita a senha:</label>
                         <input
                             type="password"
                             id="repeatpassword"
@@ -143,7 +149,7 @@ function Cadastro() {
                     <Messages ref={msgs} />
                 </SplitterPanel>
             </Splitter>
-        </div>
+        </div >
     );
 }
 

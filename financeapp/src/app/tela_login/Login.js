@@ -5,6 +5,8 @@ import './login.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Messages } from 'primereact/messages';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -66,7 +68,7 @@ function Login() {
             <Card className="card">
                 <div className="buttoncontainer">
                     <Button className="logobutton" onClick={handleCadastroClick}>
-                        <img className="logo" src="https://cdn.pixabay.com/photo/2016/12/14/10/39/button-1905961_1280.png" alt=""></img>
+                        <img className="logo" src="https://st3.depositphotos.com/1688079/16329/i/450/depositphotos_163295012-stock-photo-back-arrow-icon-elegant-blue.jpg" alt=""></img>
                     </Button>
                 </div>
                 <h1 className="titulo">Faça o login</h1>
@@ -83,7 +85,8 @@ function Login() {
                     <p className="titulo2">Ou acesse com seu email</p>
                 </div>
                 <div>
-                    <label className="label" htmlFor="email">Email:</label>
+                    <label className="label" htmlFor="email">
+                        <FontAwesomeIcon icon={faEnvelope} className="icon-spacing" /> Email:</label>
                     <input
                         className="input"
                         type="text"
@@ -93,7 +96,8 @@ function Login() {
                     />
                 </div>
                 <div>
-                    <label className="label" htmlFor="password">Senha:</label>
+                    <label className="label" htmlFor="password">
+                        <FontAwesomeIcon icon={faLock} className="icon-spacing" />Senha:</label>
                     <input
                         className="input"
                         type="password"

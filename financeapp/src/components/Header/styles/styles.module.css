@@ -2,10 +2,10 @@
   background: #ff4136;
   color: white;
   border: none;
-  padding: 10px 20px;
+
   cursor: pointer;
   font-size: 16px;
-  margin-left: 50px;
+
   border-radius: 5px;
   transition: all 0.3s ease;
   &:hover {
@@ -17,7 +17,6 @@
   background: transparent;
   border: none;
   color: black; /* Cor do texto */
-  padding: 10px 20px;
   cursor: pointer;
   font-size: 16px;
   transition: all 0.3s ease;
@@ -31,5 +30,17 @@
 }
 
 .RightComponents {
+  float: right;
+  align-items: end;
   display: flex;
+  flex-direction: row;
+}
+
+.header {
+  background-color: #ffffff;
+  margin: -8px;
+}
+
+.RghCompPadding {
+  padding-left: 20px;
 }

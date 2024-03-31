@@ -3,6 +3,7 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
+import styles from "../styles/styles.module.css";
 import axios from "axios";
 
 export default function ReceitasTable() {
@@ -26,11 +27,19 @@ export default function ReceitasTable() {
 
   const renderEditButton = (rowData) => {
     return (
-      <Button
-        icon="pi pi-pencil"
-        className="p-button-rounded p-button-success p-mr-2"
-        onClick={() => editReceita(rowData)}
-      />
+      <div>
+        <Button
+          icon="pi pi-pencil"
+          className="p-button-rounded p-button-success p-mr-2"
+          onClick={() => editReceita(rowData)}
+        />
+        <Button
+          icon="pi pi-trash"
+          className="p-button-rounded p-button-danger p-mr-2"
+          onClick={() => ("")}
+        />
+      </div>
+
     );
   };
 
@@ -40,18 +49,18 @@ export default function ReceitasTable() {
   };
 
   return (
-    <div id="DataTable" className="DataTable">
+    <div id="DataTable" className={styles.tableConteiner}>
       <div className="p-d-flex p-jc-between p-mb-2">
-        <div className="p-d-flex p-ai-center">
-          <span className="p-input-icon-left">
-            <i className="pi pi-search" />
-            <InputText
-              value={globalFilter}
-              onChange={(e) => setGlobalFilter(e.target.value)}
-              placeholder="Pesquisar por nome"
-            />
-          </span>
-        </div>
+
+        <span className="p-input-icon-left">
+          <i className="pi pi-search" />
+          <InputText
+            value={globalFilter}
+            onChange={(e) => setGlobalFilter(e.target.value)}
+            placeholder="Pesquisar por nome"
+          />
+        </span>
+
       </div>
       <DataTable
         className="custom-data-table"

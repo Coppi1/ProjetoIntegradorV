@@ -1,29 +1,38 @@
 .body {
+  background-color: #a1c9ec;
   font-weight: 300;
   font-size: medium;
-  padding-top: 1%;
-  margin: 10px;
+  margin: -8px;
   display: grid;
   grid-template-rows: auto;
   gap: 10px;
   grid-template-columns: repeat(2, 1fr);
+  margin-bottom: -20px;
+}
+
+.bodyTable {
+  background-color: #a1c9ec;
+  margin: -8px;
 }
 
 .formConteiner,
-.graficoConteiner {
+.graficoConteiner,
+.tableConteiner {
   display: grid;
-  padding: 15px;
+  padding: 30px;
   border: 1px solid #333; /* Cor de borda mais clara para contraste */
   border-radius: 2%;
+  background-color: #ffffffb0;
+  margin: 20px;
 }
 
-.tableConteiner {
-  background-color: #222; /* Cor de fundo mais escura para contraste */
+/* .tableConteiner {
+  background-color: #222; 
   display: flex;
   justify-content: center;
   align-items: center;
   grid-column: 1 / -1;
-}
+} */
 
 .formGroup {
   padding: 3px;

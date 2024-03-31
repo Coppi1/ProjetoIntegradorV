@@ -100,3 +100,7 @@
     border: none;
     cursor: pointer;
 }
+
+.icon-spacing {
+    margin-right: 7px;
+}

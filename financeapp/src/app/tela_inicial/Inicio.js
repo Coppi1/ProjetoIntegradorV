@@ -4,7 +4,7 @@ import { InputText } from "primereact/inputtext";
 import { useNavigate } from "react-router-dom";
 import styles from "./styles/styles.module.css";
 import { Header } from "./components/Header";
-import  Footer  from "./components/Footer";
+import Footer from "./components/Footer";
 
 
 export const Inicio = () => {
@@ -33,7 +33,9 @@ export const Inicio = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />
-              <Button type="submit" label="Inscreva-se" />
+              <div className={styles.btIncrevase}>
+                <Button type="submit" label="Inscreva-se" />
+              </div>
             </form>
           </div>
 

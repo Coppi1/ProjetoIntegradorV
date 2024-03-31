@@ -7,16 +7,17 @@ import ReceitasTable from "./components/ReceitasTable";
 import global from "../../styles/global.module.css";
 
 export const LancamentoReceita = () => {
-  return (
-    <div id="Conteiner">
-      <div id="Header" className={global.header}>
-        <Header></Header>
-      </div>
-      <div className={styles.body}>
-        <FormularioReceita></FormularioReceita>
-        <Grafico></Grafico>
-      </div>
+  return (<>
+    <div id="Header">
+      <Header></Header>
+    </div>
+    <div className={styles.body}>
+      <FormularioReceita></FormularioReceita>
+      <Grafico></Grafico>
+    </div>
+    <div className={styles.bodyTable}>
       <ReceitasTable></ReceitasTable>
     </div>
+  </>
   );
 };

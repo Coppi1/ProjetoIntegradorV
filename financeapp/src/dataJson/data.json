@@ -107,6 +107,48 @@
       "descricao": "Pagamento por consultoria",
       "dtVencimento": "2024-04-25T03:00:00.000Z",
       "valor": 1200
+    },
+    {
+      "id": "6f07",
+      "numeroUnico": "",
+      "naturezaReceita": {
+        "id": "3",
+        "descricao": "Serviços"
+      },
+      "formaPgto": {
+        "id": "1",
+        "descricao": "Dinheiro"
+      },
+      "descricao": "qwdq",
+      "dtVencimento": "2024-03-04T03:00:00.000Z",
+      "valor": 23131
+    },
+    {
+      "id": "bb30",
+      "numeroUnico": "",
+      "naturezaReceita": {
+        "id": "3",
+        "descricao": "Serviços"
+      },
+      "formaPgto": {
+        "id": "5",
+        "descricao": "Cartão de Credito"
+      },
+      "descricao": "qweqqdwq",
+      "dtVencimento": "2024-03-13T03:00:00.000Z",
+      "valor": 231231
+    },
+    {
+      "id": "86a9",
+      "numeroUnico": "",
+      "naturezaReceita": {
+        "id": "1",
+        "descricao": "Vendas"
+      },
+      "formaPgto": "null",
+      "descricao": "qdwq",
+      "dtVencimento": "2024-03-13T03:00:00.000Z",
+      "valor": 31231
     }
   ],
   "cadastro": [

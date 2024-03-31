@@ -27,11 +27,19 @@ export default function ReceitasTable() {
 
   const renderEditButton = (rowData) => {
     return (
-      <Button
-        icon="pi pi-pencil"
-        className="p-button-rounded p-button-success p-mr-2"
-        onClick={() => editReceita(rowData)}
-      />
+      <div>
+        <Button
+          icon="pi pi-pencil"
+          className="p-button-rounded p-button-success p-mr-2"
+          onClick={() => editReceita(rowData)}
+        />
+        <Button
+          icon="pi pi-trash"
+          className="p-button-rounded p-button-danger p-mr-2"
+          onClick={() => ("")}
+        />
+      </div>
+
     );
   };
 

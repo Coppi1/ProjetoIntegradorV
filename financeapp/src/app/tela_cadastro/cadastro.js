@@ -7,6 +7,8 @@ import axios from 'axios';
 import { Messages } from 'primereact/messages';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import { InputText } from "primereact/inputtext";
+import { FloatLabel } from 'primereact/floatlabel';
 
 function Cadastro() {
     const [nome, setNome] = useState("");
@@ -99,50 +101,62 @@ function Cadastro() {
                     <div>
                         <p className="titulo2">Ou entre com seu email</p>
                     </div>
-                    <div>
-                        <label htmlFor="nome" className="label">
-                            <FontAwesomeIcon icon={faUser} className="icon-spacing" /> Nome completo:</label>
-                        <input
-                            type="text"
-                            id="nome"
-                            value={nome}
-                            onChange={(e) => setNome(e.target.value)}
-                            className="input"
-                        />
+                    <br></br>
+                    <div className="formulario">
+                        <div>
+                            <FloatLabel className="floatlabel-center">
+                                <label htmlFor="nome" className="label">
+                                    <FontAwesomeIcon icon={faUser} className="icon-spacing" /> Nome completo:</label>
+                                <InputText
+                                    type="text"
+                                    id="nome"
+                                    value={nome}
+                                    onChange={(e) => setNome(e.target.value)}
+                                    className="input"
+                                />
+                            </FloatLabel>
+                        </div>
+                        <div>
+                            <FloatLabel className="floatlabel-center">
+                                <label htmlFor="email" className="label">
+                                    <FontAwesomeIcon icon={faEnvelope} className="icon-spacing" /> Email:</label>
+                                <InputText
+                                    type="email"
+                                    id="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    className="input"
+                                />
+                            </FloatLabel>
+                        </div>
+                        <div>
+                            <FloatLabel className="floatlabel-center">
+                                <label htmlFor="password" className="label">
+                                    <FontAwesomeIcon icon={faLock} className="icon-spacing" /> Senha:</label>
+                                <InputText
+                                    type="password"
+                                    id="password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    className="input"
+                                />
+                            </FloatLabel>
+                        </div>
+                        <div>
+                            <FloatLabel className="floatlabel-center">
+                                <label htmlFor="repeatpassword" className="label">
+                                    <FontAwesomeIcon icon={faLock} className="icon-spacing" /> Repita a senha:</label>
+                                <InputText
+                                    type="password"
+                                    id="repeatpassword"
+                                    value={repeatpassword}
+                                    onChange={(e) => setRepeatPassword(e.target.value)}
+                                    className="input"
+                                />
+                            </FloatLabel>
+                        </div>
                     </div>
-                    <div>
-                        <label htmlFor="email" className="label">
-                            <FontAwesomeIcon icon={faEnvelope} className="icon-spacing" /> Email:</label>
-                        <input
-                            type="email"
-                            id="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            className="input"
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="password" className="label">
-                            <FontAwesomeIcon icon={faLock} className="icon-spacing" /> Senha:</label>
-                        <input
-                            type="password"
-                            id="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className="input"
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor="repeatpassword" className="label">
-                            <FontAwesomeIcon icon={faLock} className="icon-spacing" /> Repita a senha:</label>
-                        <input
-                            type="password"
-                            id="repeatpassword"
-                            value={repeatpassword}
-                            onChange={(e) => setRepeatPassword(e.target.value)}
-                            className="input"
-                        />
-                    </div>
+                    <br></br>
                     <div className="buttoncontainer">
                         <Button onClick={handleCadastro} className="button">Cadastrar</Button>
                     </div>

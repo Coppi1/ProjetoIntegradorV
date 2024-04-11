@@ -7,6 +7,8 @@ import axios from 'axios';
 import { Messages } from 'primereact/messages';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import { InputText } from "primereact/inputtext";
+import { FloatLabel } from 'primereact/floatlabel';
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -84,27 +86,34 @@ function Login() {
                 <div>
                     <p className="titulo2">Ou acesse com seu email</p>
                 </div>
-                <div>
-                    <label className="label" htmlFor="email">
-                        <FontAwesomeIcon icon={faEnvelope} className="icon-spacing" /> Email:</label>
-                    <input
-                        className="input"
-                        type="text"
-                        id="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label className="label" htmlFor="password">
-                        <FontAwesomeIcon icon={faLock} className="icon-spacing" />Senha:</label>
-                    <input
-                        className="input"
-                        type="password"
-                        id="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
+                <br></br>
+                <div className="formulario">
+                    <div>
+                        <FloatLabel className="floatlabel-center">
+                            <label className="label" htmlFor="email">
+                                <FontAwesomeIcon icon={faEnvelope} className="icon-spacing" /> Email:</label>
+                            <InputText
+                                className="input"
+                                type="text"
+                                id="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                        </FloatLabel>
+                    </div>
+                    <div>
+                        <FloatLabel className="floatlabel-center">
+                            <label className="label" htmlFor="password">
+                                <FontAwesomeIcon icon={faLock} className="icon-spacing" />Senha:</label>
+                            <InputText
+                                className="input"
+                                type="password"
+                                id="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                        </FloatLabel>
+                    </div>
                 </div>
                 <div className="buttoncontainer">
                     <Button className="button2" onClick={handleForgotPassword}>Esqueceu a senha?</Button>

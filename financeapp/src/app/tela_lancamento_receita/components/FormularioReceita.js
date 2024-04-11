@@ -7,6 +7,7 @@ import styles from "../styles/styles.module.css";
 import { Button } from "primereact/button";
 import { InputTextarea } from "primereact/inputtextarea";
 import axios, { Axios } from "axios";
+import { addLocale } from 'primereact/api';
 
 export const FormularioReceita = () => {
   const [numeroUnico, setNumeroUnico] = useState("");
@@ -17,6 +18,17 @@ export const FormularioReceita = () => {
   const [valor, setValor] = useState();
   const [naturezas, setNaturezas] = useState([]);
   const [formasPgto, setFormasPgto] = useState([]);
+
+  addLocale('br', {
+    showMonthAfterYear: true,
+    dayNames: ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'],
+    dayNamesShort: ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'],
+    dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+    monthNames: ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'],
+    monthNamesShort: ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'],
+    today: 'Hoje',
+    clear: 'Limpar'
+  });
 
   const buscarNaturezas = async () => {
     try {
@@ -119,6 +131,8 @@ export const FormularioReceita = () => {
           <Calendar
             value={dtVencimento}
             onChange={(e) => setDtvencimento(e.value)}
+            dateFormat="dd/mm/yy"
+            locale="br"
           />
           <br></br>
         </div>

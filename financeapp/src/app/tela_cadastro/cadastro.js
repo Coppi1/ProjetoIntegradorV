@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { Button } from 'primereact/button';
 import { Splitter, SplitterPanel } from 'primereact/splitter';
 import './cadastro.css';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Messages } from 'primereact/messages';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,6 +18,8 @@ function Cadastro() {
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
     const msgs = useRef(null);
+    const location = useLocation();
+    const p_email = location.state?.email;
 
     const handleCadastro = async () => {
         if (nome === "" || email === "" || password === "" || repeatpassword === "") {
@@ -122,10 +124,10 @@ function Cadastro() {
                             <FloatLabel className="floatlabel-center">
                                 <label htmlFor="email" className="label">
                                     <FontAwesomeIcon icon={faEnvelope} className="icon-spacing" /> Email:</label>
-                                <InputText
+                                <input
                                     type="email"
                                     id="email"
-                                    value={email}
+                                    value={p_email}
                                     onChange={(e) => setEmail(e.target.value)}
                                     className="input"
                                 />

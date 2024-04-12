@@ -44,7 +44,7 @@
 
 .titulo {
   text-align: center;
-  padding-bottom: 15px;
+
   text-transform: uppercase;
   font-size: large;
   font-weight: 500; /* Ajuste de peso da fonte para melhor legibilidade */
@@ -60,12 +60,18 @@
 }
 
 .graficoFilter {
-  display: grid;
+  display: inline-flex;
+  gap: 10%;
 }
 
 .grafico {
   padding-top: 15px;
   justify-self: center;
+}
+
+.buttonGraphic {
+  padding: 3px;
+  padding-top: 15px;
 }
 
 .DataTable {

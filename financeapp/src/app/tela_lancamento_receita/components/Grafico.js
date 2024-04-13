@@ -5,25 +5,65 @@ import { useState, useEffect } from "react";
 import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
 import axios from "axios";
+import { Calendar } from "primereact/calendar";
+import { addLocale } from 'primereact/api';
 
 export const Grafico = () => {
   const [chartData, setChartData] = useState({});
   const [chartOptions, setChartOptions] = useState({});
   const [receitas, setReceitas] = useState([]);
   const [naturezas, setNaturezas] = useState([]);
+  let [dataDe, setDataDe] = useState([]);
+  let [dataAte, setDataAte] = useState([]);
+
+  const atualizarParaDatasAtuais = () => {
+    // Data atual
+    let dataAtual = new Date();
+
+    // Data de 15 dias atrás
+    let dataMenos15Dias = new Date(dataAtual.getTime() - (15 * 24 * 60 * 60 * 1000));
+
+    // Atualizando o estado com as novas datas
+    setDataDe(dataMenos15Dias);
+    setDataAte(dataAtual);
+  };
+
+  addLocale('br', {
+    showMonthAfterYear: true,
+    dayNames: ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'],
+    dayNamesShort: ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'],
+    dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+    monthNames: ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'],
+    monthNamesShort: ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'],
+    today: 'Hoje',
+    clear: 'Limpar'
+  });
+
+
 
   useEffect(() => {
-    buscarReceitas();
+    // buscarReceitas();
     buscarNaturezas();
   }, []);
 
   useEffect(() => {
+    atualizarParaDatasAtuais();
+  }, []);
+
+  useEffect(() => {
+    buscarReceitas();
+  }, [dataDe, dataAte]);
+
+  useEffect(() => {
+
     // Chama calcularValorTotalPorNatureza somente quando receitas e naturezas forem atualizados
     if (receitas.length > 0 && naturezas.length > 0) {
+      const documentStyle = getComputedStyle(document.documentElement);
       const valorTotalPorNatureza = calcularValorTotalPorNatureza(receitas, naturezas);
       const labels = valorTotalPorNatureza.map((item) => item.Natureza);
       const valores = valorTotalPorNatureza.map((item) => item["Valor Total"]);
       console.log(labels);
+
       const data = {
         labels: labels,
         datasets: [
@@ -62,7 +102,17 @@ export const Grafico = () => {
 
   const buscarReceitas = async () => {
     try {
-      const resposta = await axios.get("http://localhost:4000/receitas");
+
+      // Configuração dos parâmetros de consulta
+      const params = {
+        dtVencimento: {
+          gte: dataDe, // Maior ou igual a dataInicio
+          lte: dataAte // Menor daou igual a dataFim
+        }
+      };
+
+      // Realizando a requisição GET com os parâmetros de consulta
+      const resposta = await axios.get("http://localhost:4000/receitas", { params });
       setReceitas(resposta.data);
     } catch (error) {
       console.log(error);
@@ -79,7 +129,7 @@ export const Grafico = () => {
   }
 
   const calcularValorTotalPorNatureza = (receitas, naturezas) => {
-    // Calculando o valor total por natureza
+
     const valorTotalPorNatureza = receitas.reduce((acc, receita) => {
       const { naturezaReceita, valor } = receita;
       const { id } = naturezaReceita;
@@ -87,7 +137,6 @@ export const Grafico = () => {
       return acc;
     }, {});
 
-    // Mapeando o objeto resultante para array de objetos
     const resultado = Object.entries(valorTotalPorNatureza).map(
       ([id_natureza, valorTotal]) => {
         const descricaoNatureza = naturezas.find(
@@ -110,12 +159,29 @@ export const Grafico = () => {
       </div>
 
       <div className={styles.graficoFilter}>
-        <label>Periodo: </label>
-        <Dropdown></Dropdown>
 
-        <div className={styles.button}>
-          <Button>Aplicar</Button>
+        <div className={styles.formGroup}>
+          <label>Periodo de: </label>
+          <Calendar
+            value={dataDe}
+            dateFormat="dd/mm/yy"
+            locale="br"
+            onChange={(e) => setDataDe(e.value)}
+          />
         </div>
+        <div className={styles.formGroup}>
+          <label>Periodo até: </label>
+          <Calendar
+            value={dataAte}
+            dateFormat="dd/mm/yy"
+            locale="br"
+            onChange={(e) => setDataAte(e.value)}
+          />
+        </div>
+
+      </div>
+      <div className={styles.buttonGraphic}>
+        <Button onClick={buscarReceitas}>Aplicar</Button>
       </div>
 
       <Chart
@@ -124,6 +190,7 @@ export const Grafico = () => {
         options={chartOptions}
         className={styles.grafico}
       />
+
     </div>
   );
 };

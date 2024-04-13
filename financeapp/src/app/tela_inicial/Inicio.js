@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "primereact/button";
 import { InputText } from "primereact/inputtext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import styles from "./styles/styles.module.css";
 import { Header } from "./components/Header";
 import Footer from "./components/Footer";
@@ -9,9 +9,14 @@ import Footer from "./components/Footer";
 
 export const Inicio = () => {
 
-  const [email, setEmail] = useState("");
+  const [p_email, setEmail] = useState("");
+  const navigate = useNavigate();
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
+    navigate('/Cadastro', { state: { email: p_email } });
+  };
 
   return (
     <div >
@@ -25,11 +30,11 @@ export const Inicio = () => {
               dinheiro!
             </h3>
             <h5>Conheça o APP de forma gratuita, inicie seu cadastro:</h5>
-            <form onSubmit={() => { }}>
+            <form onSubmit={handleSubmit}>
               <InputText className={styles.inputText}
                 type="email"
                 placeholder="Digite seu e-mail"
-                value={email}
+                value={p_email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
               />

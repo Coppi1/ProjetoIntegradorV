@@ -80,12 +80,14 @@ function Cadastro() {
         <div className="container">
             <Splitter className="splitter">
                 <SplitterPanel size={50} className="splitter-panel1">
-                    <h1 className="titulo3">Bem-Vindo!</h1>
-                    <div>
-                        <p className="frase">Para se manter conectado conosco, faça login com suas informações pessoais</p>
-                    </div>
-                    <div>
-                        <Button className="button" onClick={handleLoginButtonClick}>Fazer login</Button>
+                    <div className="card-translucido">
+                        <h1 className="titulo3">Bem-Vindo!</h1>
+                        <div>
+                            <p className="frase">Para se manter conectado conosco, faça login com suas informações pessoais</p>
+                        </div>
+                        <div>
+                            <Button className="button" onClick={handleLoginButtonClick}>Fazer login</Button>
+                        </div>
                     </div>
                 </SplitterPanel>
 

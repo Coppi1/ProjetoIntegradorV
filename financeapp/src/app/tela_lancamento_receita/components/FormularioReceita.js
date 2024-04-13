@@ -11,16 +11,27 @@ import axios, { Axios } from "axios";
 export const FormularioReceita = () => {
   const [numeroUnico, setNumeroUnico] = useState("");
   const [naturezaReceita, setNaturezaReceita] = useState("null");
+  const [parceiro, setParceiro] = useState("null");
   const [formaPgto, setformaPgto] = useState("null");
   const [descricao, setDescricao] = useState("");
   const [dtVencimento, setDtvencimento] = useState("");
   const [valor, setValor] = useState();
+  const [parceiros, setParceiros] = useState([]);
   const [naturezas, setNaturezas] = useState([]);
   const [formasPgto, setFormasPgto] = useState([]);
 
   const buscarNaturezas = async () => {
     try {
       const resposta = await axios.get("http://localhost:4000/naturezas");
+      setNaturezas(resposta.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const buscarParceiros = async () => {
+    try {
+      const resposta = await axios.get("http://localhost:4000/parceiros");
       setNaturezas(resposta.data);
     } catch (error) {
       console.log(error);
@@ -77,7 +88,7 @@ export const FormularioReceita = () => {
   }, []);
 
   return (
-    <div id="Formulario">
+    <div id="FormularioReceita">
       <div className={styles.formConteiner}>
         <div className={styles.titulo}>
           <h4>Lançamento de Receitas</h4>
@@ -88,6 +99,18 @@ export const FormularioReceita = () => {
             value={numeroUnico}
             onChange={(e) => setNumeroUnico(e.target.value)}
             readOnly="true"
+          />
+          <br></br>
+        </div>
+
+        <div id="Parceiro" className={styles.formGroup}>
+          <label>Natureza da Receita: </label>
+          <Dropdown
+            value={parceiro}
+            onChange={(e) => setNaturezaReceita(e.value)}
+            options={parceiro}
+            optionLabel="razao_social"
+            placeholder="Selecione o Parceiro"
           />
           <br></br>
         </div>

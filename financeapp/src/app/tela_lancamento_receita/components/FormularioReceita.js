@@ -7,20 +7,43 @@ import styles from "../styles/styles.module.css";
 import { Button } from "primereact/button";
 import { InputTextarea } from "primereact/inputtextarea";
 import axios, { Axios } from "axios";
+import { addLocale } from 'primereact/api';
 
 export const FormularioReceita = () => {
   const [numeroUnico, setNumeroUnico] = useState("");
   const [naturezaReceita, setNaturezaReceita] = useState("null");
+  const [parceiro, setParceiro] = useState("null");
   const [formaPgto, setformaPgto] = useState("null");
   const [descricao, setDescricao] = useState("");
   const [dtVencimento, setDtvencimento] = useState("");
   const [valor, setValor] = useState();
+  const [parceiros, setParceiros] = useState([]);
   const [naturezas, setNaturezas] = useState([]);
   const [formasPgto, setFormasPgto] = useState([]);
+
+  addLocale('br', {
+    showMonthAfterYear: true,
+    dayNames: ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'],
+    dayNamesShort: ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sáb'],
+    dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
+    monthNames: ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'],
+    monthNamesShort: ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'],
+    today: 'Hoje',
+    clear: 'Limpar'
+  });
 
   const buscarNaturezas = async () => {
     try {
       const resposta = await axios.get("http://localhost:4000/naturezas");
+      setNaturezas(resposta.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const buscarParceiros = async () => {
+    try {
+      const resposta = await axios.get("http://localhost:4000/parceiros");
       setNaturezas(resposta.data);
     } catch (error) {
       console.log(error);
@@ -77,7 +100,7 @@ export const FormularioReceita = () => {
   }, []);
 
   return (
-    <div id="Formulario">
+    <div id="FormularioReceita">
       <div className={styles.formConteiner}>
         <div className={styles.titulo}>
           <h4>Lançamento de Receitas</h4>
@@ -88,6 +111,18 @@ export const FormularioReceita = () => {
             value={numeroUnico}
             onChange={(e) => setNumeroUnico(e.target.value)}
             readOnly="true"
+          />
+          <br></br>
+        </div>
+
+        <div id="Parceiro" className={styles.formGroup}>
+          <label>Natureza da Receita: </label>
+          <Dropdown
+            value={parceiro}
+            onChange={(e) => setNaturezaReceita(e.value)}
+            options={parceiro}
+            optionLabel="razao_social"
+            placeholder="Selecione o Parceiro"
           />
           <br></br>
         </div>
@@ -119,6 +154,8 @@ export const FormularioReceita = () => {
           <Calendar
             value={dtVencimento}
             onChange={(e) => setDtvencimento(e.value)}
+            dateFormat="dd/mm/yy"
+            locale="br"
           />
           <br></br>
         </div>

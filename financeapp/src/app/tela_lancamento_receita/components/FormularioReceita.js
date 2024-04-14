@@ -126,6 +126,7 @@ export const FormularioReceita = () => {
             optionLabel="razao_social"
             placeholder="Selecione o Parceiro"
           />
+
           <br></br>
         </div>
 
@@ -148,6 +149,7 @@ export const FormularioReceita = () => {
             optionLabel="descricao"
             placeholder="Selecione a natureza"
           />
+
           <br></br>
         </div>
 

@@ -61,61 +61,42 @@
   ],
   "receitas": [
     {
-      "id": "76a2",
+      "id": "4d69",
       "numeroUnico": "",
       "parceiro": {
-        "id": "1",
-        "razao_social": "teste1"
+        "id": "2",
+        "razao_social": "teste2"
       },
       "naturezaReceita": {
-        "id": "2",
-        "descricao": "Aplicações"
+        "id": "3",
+        "descricao": "Serviços"
       },
       "formaPgto": {
-        "id": "5",
-        "descricao": "Cartão de Credito"
+        "id": "8",
+        "descricao": "Juros"
       },
-      "descricao": "qwdq",
-      "dtVencimento": "2024-04-09T03:00:00.000Z",
-      "valor": 123123
+      "descricao": "wdqwdq",
+      "dtVencimento": "2024-04-16T03:00:00.000Z",
+      "valor": "150"
     },
     {
-      "id": "76a2",
+      "id": "7ff2",
       "numeroUnico": "",
       "parceiro": {
-        "id": "1",
-        "razao_social": "teste1"
+        "id": "2",
+        "razao_social": "teste2"
       },
       "naturezaReceita": {
-        "id": "2",
-        "descricao": "Aplicações"
+        "id": "4",
+        "descricao": "Emprestimos"
       },
       "formaPgto": {
-        "id": "5",
-        "descricao": "Cartão de Credito"
+        "id": "9",
+        "descricao": "Outros"
       },
-      "descricao": "qwdq",
-      "dtVencimento": "2024-04-10T03:00:00.000Z",
-      "valor": 123123
-    },
-    {
-      "id": "76a2",
-      "numeroUnico": "",
-      "parceiro": {
-        "id": "1",
-        "razao_social": "teste1"
-      },
-      "naturezaReceita": {
-        "id": "2",
-        "descricao": "Aplicações"
-      },
-      "formaPgto": {
-        "id": "5",
-        "descricao": "Cartão de Credito"
-      },
-      "descricao": "qwdq",
-      "dtVencimento": "2024-04-14T03:00:00.000Z",
-      "valor": 123123
+      "descricao": "rewrfwe",
+      "dtVencimento": "2024-04-15T03:00:00.000Z",
+      "valor": "100"
     }
   ],
   "parceiro": [

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Dialog } from "primereact/dialog";
 import { ConfirmDialog } from "primereact/confirmdialog";
 import { Button } from "primereact/button";
@@ -19,6 +19,9 @@ export default function EditarReceita({
   confirmAction,
   setConfirmAction,
   naturezas,
+  setNaturezas,
+  dtVencimento,
+  setDtvencimento,
 }) {
   const renderConfirmDialog = () => {
     if (!confirmDialogVisible) return null;
@@ -31,9 +34,7 @@ export default function EditarReceita({
             setReceitas(receitas.filter((r) => r.id !== receitaEditada.id));
             alert("Registro excluído com sucesso");
           })
-          .catch((error) =>
-            console.error("Erro ao excluir receita:", error)
-          );
+          .catch((error) => console.error("Erro ao excluir receita:", error));
       }
       setConfirmDialogVisible(false);
     };
@@ -71,15 +72,22 @@ export default function EditarReceita({
           setReceitas(updatedReceitas);
           alert("Registro editado com sucesso");
         })
-        .catch((error) =>
-          console.error("Erro ao editar receita:", error)
-        );
+        .catch((error) => console.error("Erro ao editar receita:", error));
       setDialogVisible(false);
     };
 
     const cancel = () => {
       setDialogVisible(false);
     };
+
+    axios
+      .get("http://localhost:4000/receitas")
+      .then((response) => {
+        setReceitas(response.data);
+      })
+      .catch((error) => {
+        console.error("Erro ao buscar receitas:", error);
+      });
 
     return (
       <Dialog
@@ -111,7 +119,10 @@ export default function EditarReceita({
             id="descricao"
             value={receitaEditada.descricao}
             onChange={(e) =>
-              setReceitaEditada({ ...receitaEditada, descricao: e.target.value })
+              setReceitaEditada({
+                ...receitaEditada,
+                descricao: e.target.value,
+              })
             }
           />
         </div>
@@ -120,9 +131,12 @@ export default function EditarReceita({
           <Dropdown
             id="naturezaReceita"
             value={receitaEditada.naturezaReceita}
-            options={naturezas.map((n) => ({ label: n.descricao, value: n }))}
+            options={naturezas}
             onChange={(e) =>
-              setReceitaEditada({ ...receitaEditada, naturezaReceita: e.value })
+              setReceitaEditada({
+                ...receitaEditada,
+                naturezaReceita: e.target.value,
+              })
             }
             optionLabel="descricao"
             placeholder="Selecione a natureza"
@@ -132,18 +146,15 @@ export default function EditarReceita({
           <label htmlFor="dtVencimento">Data de Vencimento</label>
           <Calendar
             id="dtVencimento"
-            value={
-              receitaEditada.dtVencimento
-                ? new Date(receitaEditada.dtVencimento)
-                : null
-            }
+            value={new Date(receitaEditada.dtVencimento)}
             onChange={(e) =>
               setReceitaEditada({
                 ...receitaEditada,
-                dtVencimento: e.value ? e.value.toISOString().slice(0, 10) : null,
+                dtVencimento: e.value,
               })
             }
             placeholder="Selecione a data"
+            dateFormat="dd/mm/yy"
           />
         </div>
         <div className="p-field">

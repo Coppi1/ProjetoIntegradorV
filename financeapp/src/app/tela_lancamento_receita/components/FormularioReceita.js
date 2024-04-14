@@ -153,13 +153,14 @@ export const FormularioReceita = () => {
           <br></br>
         </div>
 
-        <div id="DataVenc" className={styles.formGroup}>
+        <div id="dtVencimento" className={styles.formGroup}>
           <label>Data de Vencimento:</label>
           <Calendar
             value={dtVencimento}
             onChange={(e) => setDtvencimento(e.value)}
             dateFormat="dd/mm/yy"
             locale="br"
+
           />
           <br></br>
         </div>

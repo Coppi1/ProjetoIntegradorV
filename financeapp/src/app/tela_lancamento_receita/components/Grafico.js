@@ -2,7 +2,6 @@ import React from "react";
 import styles from "../styles/styles.module.css";
 import { Chart } from "primereact/chart";
 import { useState, useEffect } from "react";
-import { Dropdown } from "primereact/dropdown";
 import { Button } from "primereact/button";
 import axios from "axios";
 import { Calendar } from "primereact/calendar";
@@ -102,12 +101,11 @@ export const Grafico = () => {
 
   const buscarReceitas = async () => {
     try {
-
       // Configuração dos parâmetros de consulta
       const params = {
         dtVencimento: {
           gte: dataDe, // Maior ou igual a dataInicio
-          lte: dataAte // Menor daou igual a dataFim
+          lte: dataAte // Menor ou igual a dataFim
         }
       };
 
@@ -115,7 +113,8 @@ export const Grafico = () => {
       const resposta = await axios.get("http://localhost:4000/receitas", { params });
       setReceitas(resposta.data);
     } catch (error) {
-      console.log(error);
+      // Tratamento de erros
+      console.error("Erro ao buscar receitas:", error);
     }
   };
 

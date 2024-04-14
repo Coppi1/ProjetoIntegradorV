@@ -4,7 +4,6 @@ import { FormularioReceita } from "./components/FormularioReceita";
 import { Grafico } from "./components/Grafico";
 import styles from "./styles/styles.module.css";
 import ReceitasTable from "./components/ReceitasTable";
-import global from "../../styles/global.module.css";
 
 export const LancamentoReceita = () => {
   return (<>

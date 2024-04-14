@@ -8,18 +8,11 @@ import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import styles from "./styles/styles.module.css";
 
+
 export const Header = () => {
   const navigate = useNavigate();
 
-  // const itemRenderer = (item) => (
-  //   <a className={styles.conteiner}>
-  //     <span className={item.icon} />
-  //     <span className="mx-2">{item.label}</span>
-  //     {item.badge && <Badge className="ml-auto" value={item.badge} />}
-  //     {item.shortcut && <span className="ml-auto border-1 surface-border border-round surface-100 text-xs p-1">{item.shortcut}</span>}
-  //   </a>
-  // );
-
+  //itens do menubar
   const items = [
     {
       label: "Home",
@@ -70,6 +63,22 @@ export const Header = () => {
       label: "Conciliação Bancária",
       icon: "pi pi-briefcase",
     },
+    {
+      label: "Parceiro",
+      icon: 'fa fa-users',
+      items: [
+        {
+          label: "Cadastro de Parceiros",
+          command: () => {
+            navigate("/CadastroParceiro");
+          },
+        },
+        {
+          label: "Ficha de Parceiros",
+
+        },
+      ],
+    },
   ];
 
   const start = (
@@ -108,4 +117,5 @@ export const Header = () => {
     </div>
   );
 }
+
 export default Header;

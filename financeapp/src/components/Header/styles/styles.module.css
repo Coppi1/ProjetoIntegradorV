@@ -44,3 +44,11 @@
 .RghCompPadding {
   padding-left: 20px;
 }
+
+.Parceiro-icon {
+  background-image: url("../assets/parceiro-icon.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 26px; /* Ajuste conforme necessário */
+  height: 26px; /* Ajuste conforme necessário */
+}

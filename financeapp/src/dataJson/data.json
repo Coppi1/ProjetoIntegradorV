@@ -47,18 +47,86 @@
       "descricao": "Cartão de Debito"
     },
     {
-      "id": "6",
+      "id": "7",
+      "descricao": "Tarifas bancárias"
+    },
+    {
+      "id": "8",
+      "descricao": "Juros"
+    },
+    {
+      "id": "9",
       "descricao": "Outros"
     }
   ],
   "receitas": [
-   
+    {
+      "id": "76a2",
+      "numeroUnico": "",
+      "parceiro": {
+        "id": "1",
+        "razao_social": "teste1"
+      },
+      "naturezaReceita": {
+        "id": "2",
+        "descricao": "Aplicações"
+      },
+      "formaPgto": {
+        "id": "5",
+        "descricao": "Cartão de Credito"
+      },
+      "descricao": "qwdq",
+      "dtVencimento": "2024-04-09T03:00:00.000Z",
+      "valor": 123123
+    },
+    {
+      "id": "76a2",
+      "numeroUnico": "",
+      "parceiro": {
+        "id": "1",
+        "razao_social": "teste1"
+      },
+      "naturezaReceita": {
+        "id": "2",
+        "descricao": "Aplicações"
+      },
+      "formaPgto": {
+        "id": "5",
+        "descricao": "Cartão de Credito"
+      },
+      "descricao": "qwdq",
+      "dtVencimento": "2024-04-10T03:00:00.000Z",
+      "valor": 123123
+    },
+    {
+      "id": "76a2",
+      "numeroUnico": "",
+      "parceiro": {
+        "id": "1",
+        "razao_social": "teste1"
+      },
+      "naturezaReceita": {
+        "id": "2",
+        "descricao": "Aplicações"
+      },
+      "formaPgto": {
+        "id": "5",
+        "descricao": "Cartão de Credito"
+      },
+      "descricao": "qwdq",
+      "dtVencimento": "2024-04-14T03:00:00.000Z",
+      "valor": 123123
+    }
   ],
-  
   "parceiro": [
-
-    
-
+    {
+      "id": "1",
+      "razao_social": "teste1"
+    },
+    {
+      "id": "2",
+      "razao_social": "teste2"
+    }
   ],
   "usuario": [
     {

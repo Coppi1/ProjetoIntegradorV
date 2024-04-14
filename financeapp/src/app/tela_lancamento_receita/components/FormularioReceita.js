@@ -43,8 +43,8 @@ export const FormularioReceita = () => {
 
   const buscarParceiros = async () => {
     try {
-      const resposta = await axios.get("http://localhost:4000/parceiros");
-      setNaturezas(resposta.data);
+      const resposta = await axios.get("http://localhost:4000/parceiro");
+      setParceiros(resposta.data);
     } catch (error) {
       console.log(error);
     }
@@ -64,6 +64,7 @@ export const FormularioReceita = () => {
     try {
       const novaReceita = {
         numeroUnico,
+        parceiro,
         naturezaReceita,
         formaPgto,
         descricao,
@@ -80,7 +81,7 @@ export const FormularioReceita = () => {
           },
         }
       );
-      console.log(response.data);
+
 
       // Limpar o formulário
       setNumeroUnico("");
@@ -97,6 +98,7 @@ export const FormularioReceita = () => {
   useEffect(() => {
     buscarFormasPgto();
     buscarNaturezas();
+    buscarParceiros();
   }, []);
 
   return (
@@ -119,8 +121,8 @@ export const FormularioReceita = () => {
           <label>Natureza da Receita: </label>
           <Dropdown
             value={parceiro}
-            onChange={(e) => setNaturezaReceita(e.value)}
-            options={parceiro}
+            onChange={(e) => setParceiro(e.value)}
+            options={parceiros}
             optionLabel="razao_social"
             placeholder="Selecione o Parceiro"
           />

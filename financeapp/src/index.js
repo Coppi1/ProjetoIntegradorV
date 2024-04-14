@@ -5,8 +5,11 @@ import { LancamentoDespesa } from "./app/tela_lancamento_despesa/LancamentoDespe
 import { Home } from "./app/tela_home/Home";
 import { Inicio } from "./app/tela_inicial/Inicio";
 import Cadastro from "./app/tela_cadastro/cadastro";
-import Login from "./app/tela_login/login";
+import Login from "./app/tela_login/Login";
 import { LancamentoReceita } from "./app/tela_lancamento_receita/LancamentoReceita";
+import { CadastroParceiro } from "./app/tela_cadastro_parceiro/CadastroParceiro";
+import Header from "./components/Header/Header";
+
 
 const router = createBrowserRouter([
   {
@@ -33,6 +36,14 @@ const router = createBrowserRouter([
     path: "Cadastro",
     element: <Cadastro />,
   },
+  {
+    path: "CadastroParceiro",
+    element: <CadastroParceiro />
+  },
+  {
+    // path: "Header",
+    element: <Header />
+  }
 ]);
 
 createRoot(document.getElementById("root")).render(

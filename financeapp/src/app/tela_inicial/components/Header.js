@@ -4,7 +4,6 @@ import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
 import logo from "./logo.png"
 import styles from "../styles/styles.module.css";
-import Footer from './Footer';
 
 
 export const Header = () => {

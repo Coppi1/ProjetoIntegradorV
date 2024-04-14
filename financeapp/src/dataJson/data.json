@@ -52,14 +52,23 @@
     }
   ],
   "receitas": [
-   
+    {
+      "id": "75cf",
+      "numeroUnico": "",
+      "naturezaReceita": {
+        "id": "5",
+        "descricao": "Salario"
+      },
+      "formaPgto": {
+        "id": "1",
+        "descricao": "Dinheiro"
+      },
+      "descricao": "t",
+      "dtVencimento": "2024-04-23",
+      "valor": "10005"
+    }
   ],
-  
-  "parceiro": [
-
-    
-
-  ],
+  "parceiro": [],
   "usuario": [
     {
       "id": "b447",
@@ -115,5 +124,6 @@
       "email": "raphaelaml1@outlook.com",
       "password": "11"
     }
-  ]
+  ],
+  "receitaEditada": []
 }

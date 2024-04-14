@@ -20,15 +20,14 @@ export default function EditarReceita({
   confirmDialogVisible,
   setConfirmDialogVisible,
   confirmAction,
-  setConfirmAction,
   naturezas,
-  setNaturezas,
-  dtVencimento,
-  setDtvencimento,
+  addLocale
 }) {
 
 
   const renderConfirmDialog = () => {
+
+
 
     if (!confirmDialogVisible) return null;
 

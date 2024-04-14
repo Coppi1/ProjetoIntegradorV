@@ -113,6 +113,19 @@
       "descricao": "ewqeq",
       "dtVencimento": "2024-04-03T03:00:00.000Z",
       "valor": 213
+    },
+    {
+      "id": "f03f",
+      "numeroUnico": "",
+      "parceiro": {
+        "id": "2",
+        "razao_social": "teste2"
+      },
+      "naturezaReceita": "",
+      "formaPgto": "",
+      "descricao": "",
+      "dtVencimento": "",
+      "valor": null
     }
   ],
   "parceiro": [

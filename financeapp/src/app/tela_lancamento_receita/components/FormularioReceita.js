@@ -8,18 +8,28 @@ import { Button } from "primereact/button";
 import { InputTextarea } from "primereact/inputtextarea";
 import axios, { Axios } from "axios";
 import { addLocale } from 'primereact/api';
+import { AutoComplete } from "primereact/autocomplete";
 
 export const FormularioReceita = () => {
   const [numeroUnico, setNumeroUnico] = useState("");
-  const [naturezaReceita, setNaturezaReceita] = useState("null");
-  const [parceiro, setParceiro] = useState("null");
-  const [formaPgto, setformaPgto] = useState("null");
+  const [naturezaReceita, setNaturezaReceita] = useState("");
+  const [parceiro, setParceiro] = useState("");
+  const [formaPgto, setformaPgto] = useState("");
   const [descricao, setDescricao] = useState("");
   const [dtVencimento, setDtvencimento] = useState("");
   const [valor, setValor] = useState();
   const [parceiros, setParceiros] = useState([]);
   const [naturezas, setNaturezas] = useState([]);
   const [formasPgto, setFormasPgto] = useState([]);
+  const [filteredParceiros, setFilteredParceiros] = useState(null);
+
+  const [erros, setErros] = useState({
+    naturezaReceita: "",
+    parceiro: "",
+    dtVencimento: "",
+    valor: "",
+    formaPgto: "",
+  });
 
   addLocale('br', {
     showMonthAfterYear: true,
@@ -31,6 +41,52 @@ export const FormularioReceita = () => {
     today: 'Hoje',
     clear: 'Limpar'
   });
+
+  const validarFormulario = () => {
+    let errosLocais = {};
+
+    if (!naturezaReceita) {
+      errosLocais.naturezaReceita = "A natureza da receita é obrigatória.";
+    }
+
+    if (!parceiro) {
+      errosLocais.parceiro = "O parceiro é obrigatório.";
+    }
+
+    if (!dtVencimento) {
+      errosLocais.dtVencimento = "A data de vencimento é obrigatória.";
+    }
+
+    if (!valor) {
+      errosLocais.valor = "O valor é obrigatório.";
+    }
+
+    if (!formaPgto) {
+      errosLocais.formaPgto = "A forma de pagamento é obrigatória.";
+    }
+
+    setErros(errosLocais);
+
+    return Object.keys(errosLocais).length === 0;
+  };
+
+  const searchAutoCompleteParceiros = (event) => {
+    let query = event.query;
+    let filteredParceiros = [];
+
+    if (parceiros) {
+      filteredParceiros = parceiros.filter((parceiro) => {
+        const razaoSocial = parceiro.razao_social.toLowerCase();
+        return razaoSocial.includes(query.toLowerCase());
+      });
+    }
+
+    setFilteredParceiros(filteredParceiros);
+  };
+
+  const itemTemplate = (parceiro) => {
+    return <div>{parceiro.razao_social}</div>;
+  };
 
   const buscarNaturezas = async () => {
     try {
@@ -53,7 +109,6 @@ export const FormularioReceita = () => {
   const buscarFormasPgto = async () => {
     try {
       const resposta = await axios.get("http://localhost:4000/formaPgto");
-      //console.log("Dados: " + resposta.data[0].descricao);
       setFormasPgto(resposta.data);
     } catch (error) {
       console.log(error);
@@ -62,6 +117,12 @@ export const FormularioReceita = () => {
 
   const salvarReceita = async () => {
     try {
+      const isValid = validarFormulario();
+
+      if (!isValid) {
+        return;
+      }
+
       const novaReceita = {
         numeroUnico,
         parceiro,
@@ -82,7 +143,6 @@ export const FormularioReceita = () => {
         }
       );
 
-
       // Limpar o formulário
       setNumeroUnico("");
       setNaturezaReceita("");
@@ -90,6 +150,8 @@ export const FormularioReceita = () => {
       setDescricao("");
       setDtvencimento("");
       setValor("");
+      setParceiro(null);
+      setErros({});
     } catch (error) {
       console.error("Erro ao salvar a receita:", error);
     }
@@ -119,14 +181,16 @@ export const FormularioReceita = () => {
 
         <div id="Parceiro" className={styles.formGroup}>
           <label>Parceiro: </label>
-          <Dropdown
+          <AutoComplete
             value={parceiro}
+            suggestions={filteredParceiros}
+            completeMethod={searchAutoCompleteParceiros}
+            field="razao_social"
+            itemTemplate={itemTemplate}
             onChange={(e) => setParceiro(e.value)}
-            options={parceiros}
-            optionLabel="razao_social"
-            placeholder="Selecione o Parceiro"
+            placeholder="Digite para buscar um parceiro"
           />
-
+          <span className={styles.errorText}>{erros.parceiro}</span>
           <br></br>
         </div>
 
@@ -149,7 +213,7 @@ export const FormularioReceita = () => {
             optionLabel="descricao"
             placeholder="Selecione a natureza"
           />
-
+          <span className="text-red-500">{erros.naturezaReceita}</span>
           <br></br>
         </div>
 
@@ -160,8 +224,8 @@ export const FormularioReceita = () => {
             onChange={(e) => setDtvencimento(e.value)}
             dateFormat="dd/mm/yy"
             locale="br"
-
           />
+          <span className="text-red-500">{erros.dtVencimento}</span>
           <br></br>
         </div>
 
@@ -178,6 +242,7 @@ export const FormularioReceita = () => {
             currency="BRL"
             locale="pt-BR"
           />
+          <span className="text-red-500">{erros.valor}</span>
           <br></br>
         </div>
 
@@ -191,6 +256,8 @@ export const FormularioReceita = () => {
             placeholder="Selecione a forma de pagamento"
             className="w-full md:w-14rem"
           />
+          <span className="text-red-500">{erros.formaPgto}</span>
+          <br></br>
         </div>
 
         <div className={styles.button}>

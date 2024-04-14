@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "../styles/styles.module.css";
 import { Chart } from "primereact/chart";
-import { useState, useEffect } from "react";
 import { Button } from "primereact/button";
 import axios from "axios";
 import { Calendar } from "primereact/calendar";
@@ -11,18 +10,12 @@ export const Grafico = () => {
   const [chartData, setChartData] = useState({});
   const [chartOptions, setChartOptions] = useState({});
   const [receitas, setReceitas] = useState([]);
-  const [naturezas, setNaturezas] = useState([]);
-  let [dataDe, setDataDe] = useState([]);
-  let [dataAte, setDataAte] = useState([]);
+  const [dataDe, setDataDe] = useState(new Date());
+  const [dataAte, setDataAte] = useState(new Date());
 
   const atualizarParaDatasAtuais = () => {
-    // Data atual
     let dataAtual = new Date();
-
-    // Data de 15 dias atrás
     let dataMenos15Dias = new Date(dataAtual.getTime() - (15 * 24 * 60 * 60 * 1000));
-
-    // Atualizando o estado com as novas datas
     setDataDe(dataMenos15Dias);
     setDataAte(dataAtual);
   };
@@ -39,11 +32,6 @@ export const Grafico = () => {
   });
 
   useEffect(() => {
-    // buscarReceitas();
-    buscarNaturezas();
-  }, []);
-
-  useEffect(() => {
     atualizarParaDatasAtuais();
   }, []);
 
@@ -52,15 +40,10 @@ export const Grafico = () => {
   }, [dataDe, dataAte]);
 
   useEffect(() => {
-
-    // Chama calcularValorTotalPorNatureza somente quando receitas e naturezas forem atualizados
-    if (receitas.length > 0 && naturezas.length > 0) {
-
-      const valorTotalPorNatureza = calcularValorTotalPorNatureza(receitas, naturezas);
-      const labels = valorTotalPorNatureza.map((item) => item.Natureza);
-      const valores = valorTotalPorNatureza.map((item) => item["Valor Total"]);
-      console.log(labels);
-
+    if (receitas.length > 0) {
+      const resultado = calcularValorTotalPorNatureza(receitas, dataDe, dataAte);
+      const labels = resultado.map((item) => item.Natureza);
+      const valores = resultado.map((item) => item["Valor Total"]);
       const data = {
         labels: labels,
         datasets: [
@@ -94,52 +77,39 @@ export const Grafico = () => {
       setChartData(data);
       setChartOptions(options);
     }
-  }, [receitas, naturezas]);
-
-
+  }, [receitas]);
 
   const buscarReceitas = async () => {
     try {
-      // Manually construct the query string
-      const queryString = `dtVencimento[gte]=${encodeURIComponent(dataDe)}&dtVencimento[lte]=${encodeURIComponent(dataAte)}`;
-
-      // Realizando a requisição GET com os parâmetros de consulta
-      const resposta = await axios.get(`http://localhost:4000/receitas?${queryString}`);
+      const resposta = await axios.get(`http://localhost:4000/receitas`);
       setReceitas(resposta.data);
     } catch (error) {
       console.error("Erro ao buscar receitas:", error);
     }
   };
 
-  const buscarNaturezas = async () => {
-    try {
-      const resposta = await axios.get("http://localhost:4000/naturezas");
-      setNaturezas(resposta.data);
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
-  const calcularValorTotalPorNatureza = (receitas, naturezas) => {
+  const calcularValorTotalPorNatureza = (receitas, dataDe, dataAte) => {
+    const filteredReceitas = receitas.filter(receita => {
+      const receitaData = new Date(receita.dtVencimento);
+      return receitaData >= dataDe && receitaData <= dataAte;
+    });
 
-    const valorTotalPorNatureza = receitas.reduce((acc, receita) => {
+    const valorTotalPorNatureza = filteredReceitas.reduce((acc, receita) => {
       const { naturezaReceita, valor } = receita;
-      const { id } = naturezaReceita;
-      acc[id] = (acc[id] || 0) + valor;
+      const { id, descricao } = naturezaReceita;
+      acc[id] = {
+        ...acc[id],
+        descricao: descricao,
+        valorTotal: (acc[id]?.valorTotal || 0) + parseFloat(valor),
+      };
       return acc;
     }, {});
 
-    const resultado = Object.entries(valorTotalPorNatureza).map(
-      ([id_natureza, valorTotal]) => {
-        const descricaoNatureza = naturezas.find(
-          (natureza) => natureza.id === id_natureza
-        );
-        return {
-          Natureza: descricaoNatureza ? descricaoNatureza.descricao : "Natureza Desconhecida",
-          "Valor Total": valorTotal,
-        };
-      }
-    );
+    const resultado = Object.values(valorTotalPorNatureza).map(({ descricao, valorTotal }) => ({
+      Natureza: descricao || "Natureza Desconhecida",
+      "Valor Total": valorTotal,
+    }));
 
     console.log(resultado);
 
@@ -153,7 +123,6 @@ export const Grafico = () => {
       </div>
 
       <div className={styles.graficoFilter}>
-
         <div className={styles.formGroup}>
           <label>Periodo de: </label>
           <Calendar
@@ -172,8 +141,8 @@ export const Grafico = () => {
             onChange={(e) => setDataAte(e.value)}
           />
         </div>
-
       </div>
+
       <div className={styles.buttonGraphic}>
         <Button onClick={buscarReceitas}>Aplicar</Button>
       </div>
@@ -184,7 +153,6 @@ export const Grafico = () => {
         options={chartOptions}
         className={styles.grafico}
       />
-
     </div>
   );
 };

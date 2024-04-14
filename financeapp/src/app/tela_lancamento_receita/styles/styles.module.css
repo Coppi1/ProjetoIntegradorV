@@ -26,14 +26,6 @@
   margin: 20px;
 }
 
-/* .tableConteiner {
-  background-color: #222; 
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  grid-column: 1 / -1;
-} */
-
 .formGroup {
   padding: 3px;
   padding-top: 5px;
@@ -44,10 +36,9 @@
 
 .titulo {
   text-align: center;
-
   text-transform: uppercase;
   font-size: large;
-  font-weight: 500; /* Ajuste de peso da fonte para melhor legibilidade */
+  font-weight: 500;
 }
 
 .button {
@@ -76,4 +67,10 @@
 
 .DataTable {
   background-color: aquamarine;
+}
+
+.errorText {
+  text-decoration: red;
+  text-decoration-color: red;
+  -moz-text-decoration-color: red;
 }

@@ -1,7 +1,5 @@
 import axios from 'axios';
-import { Dropdown } from 'primereact/dropdown';
 import { InputText } from 'primereact/inputtext';
-import { InputTextarea } from 'primereact/inputtextarea';
 import React, { useState } from 'react'
 
 export const FormularioParceiro = () => {
@@ -56,18 +54,11 @@ export const FormularioParceiro = () => {
         }
     };
 
-
-
-
-
-
-
-
     return (
-        <div className={styles.}>
+        <div className="">
             <div className="">
                 <div className="">
-                    <h4>Lançamento de Receitas</h4>
+                    <h4>Cadastro de Parceiro</h4>
                 </div>
                 <div id="RazaoSocial" className="">
                     <label>Número único: </label>
@@ -80,7 +71,7 @@ export const FormularioParceiro = () => {
                 </div>
 
                 <div id="RazaoSocial" className="">
-                    <label>Razlao social: </label>
+                    <label>Razão social: </label>
                     <InputText
                         autoResize
                         value={razao_social}
@@ -88,75 +79,11 @@ export const FormularioParceiro = () => {
                     />
                     <br></br>
                 </div>
-
-                <div id="Desc" className="">
-                    <label>Descrição da Receita: </label>
-                    <InputTextarea
-                        autoResize
-                        value={descricao}
-                        onChange={(e) => setDescricao(e.target.value)}
-                    />
-                    <br></br>
-                </div>
-
-                <div id="Natureza" className="">
-                    <label>Natureza da Receita: </label>
-                    <Dropdown
-                        value={naturezaReceita}
-                        onChange={(e) => setNaturezaReceita(e.value)}
-                        options={naturezas}
-                        optionLabel="descricao"
-                        placeholder="Selecione a natureza"
-                    />
-                    <br></br>
-                </div>
-
-                <div id="DataVenc" className="">
-                    <label>Data de Vencimento:</label>
-                    <Calendar
-                        value={dtVencimento}
-                        onChange={(e) => setDtvencimento(e.value)}
-                        dateFormat="dd/mm/yy"
-                        locale="br"
-                    />
-                    <br></br>
-                </div>
-
-                <div id="Valor" className="">
-                    <label htmlFor="currency-us" className="font-bold block mb-2">
-                        {""}
-                        Valor:
-                    </label>
-                    <InputNumber
-                        inputId="currency-us"
-                        value={valor}
-                        onValueChange={(e) => setValor(e.value)}
-                        mode="currency"
-                        currency="BRL"
-                        locale="pt-BR"
-                    />
-                    <br></br>
-                </div>
-
-                <div id="FormaPgto" className="">
-                    <label>Forma de Pagamento:</label>
-                    <Dropdown
-                        value={formaPgto}
-                        onChange={(e) => setformaPgto(e.value)}
-                        options={formasPgto}
-                        optionLabel="descricao"
-                        placeholder="Selecione a forma de pagamento"
-                        className="w-full md:w-14rem"
-                    />
-                </div>
-
-                <div className="">
+                {/* <div className="">
                     <Button label="Lançar" onClick={salvarReceita} />
                     <Button label="Limpar Campos" />
-                </div>
+                </div> */}
             </div>
         </div>
-
-
     )
 }

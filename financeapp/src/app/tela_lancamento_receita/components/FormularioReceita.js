@@ -118,7 +118,7 @@ export const FormularioReceita = () => {
         </div>
 
         <div id="Parceiro" className={styles.formGroup}>
-          <label>Natureza da Receita: </label>
+          <label>Parceiro: </label>
           <Dropdown
             value={parceiro}
             onChange={(e) => setParceiro(e.value)}

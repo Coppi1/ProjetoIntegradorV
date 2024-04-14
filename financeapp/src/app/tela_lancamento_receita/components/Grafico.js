@@ -38,8 +38,6 @@ export const Grafico = () => {
     clear: 'Limpar'
   });
 
-
-
   useEffect(() => {
     // buscarReceitas();
     buscarNaturezas();
@@ -57,7 +55,7 @@ export const Grafico = () => {
 
     // Chama calcularValorTotalPorNatureza somente quando receitas e naturezas forem atualizados
     if (receitas.length > 0 && naturezas.length > 0) {
-      const documentStyle = getComputedStyle(document.documentElement);
+
       const valorTotalPorNatureza = calcularValorTotalPorNatureza(receitas, naturezas);
       const labels = valorTotalPorNatureza.map((item) => item.Natureza);
       const valores = valorTotalPorNatureza.map((item) => item["Valor Total"]);
@@ -99,21 +97,16 @@ export const Grafico = () => {
   }, [receitas, naturezas]);
 
 
+
   const buscarReceitas = async () => {
     try {
-      // Configuração dos parâmetros de consulta
-      const params = {
-        dtVencimento: {
-          gte: dataDe, // Maior ou igual a dataInicio
-          lte: dataAte // Menor ou igual a dataFim
-        }
-      };
+      // Manually construct the query string
+      const queryString = `dtVencimento[gte]=${encodeURIComponent(dataDe)}&dtVencimento[lte]=${encodeURIComponent(dataAte)}`;
 
       // Realizando a requisição GET com os parâmetros de consulta
-      const resposta = await axios.get("http://localhost:4000/receitas", { params });
+      const resposta = await axios.get(`http://localhost:4000/receitas?${queryString}`);
       setReceitas(resposta.data);
     } catch (error) {
-      // Tratamento de erros
       console.error("Erro ao buscar receitas:", error);
     }
   };
@@ -147,6 +140,8 @@ export const Grafico = () => {
         };
       }
     );
+
+    console.log(resultado);
 
     return resultado;
   };

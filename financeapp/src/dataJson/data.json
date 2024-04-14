@@ -97,6 +97,22 @@
       "descricao": "rewrfwe",
       "dtVencimento": "2024-04-15T03:00:00.000Z",
       "valor": "100"
+    },
+    {
+      "id": "088b",
+      "numeroUnico": "",
+      "parceiro": {
+        "id": "2",
+        "razao_social": "teste2"
+      },
+      "naturezaReceita": {
+        "id": "2",
+        "descricao": "Aplicações"
+      },
+      "formaPgto": "null",
+      "descricao": "ewqeq",
+      "dtVencimento": "2024-04-03T03:00:00.000Z",
+      "valor": 213
     }
   ],
   "parceiro": [

@@ -7,6 +7,9 @@ import { Calendar } from "primereact/calendar";
 import axios from "axios";
 import { Dropdown } from "primereact/dropdown";
 
+
+
+
 export default function EditarReceita({
   receitas,
   setReceitas,
@@ -23,7 +26,10 @@ export default function EditarReceita({
   dtVencimento,
   setDtvencimento,
 }) {
+
+
   const renderConfirmDialog = () => {
+
     if (!confirmDialogVisible) return null;
 
     const confirm = () => {

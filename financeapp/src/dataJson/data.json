@@ -115,17 +115,115 @@
       "valor": 213
     },
     {
-      "id": "f03f",
+      "id": "4de2",
       "numeroUnico": "",
       "parceiro": {
         "id": "2",
         "razao_social": "teste2"
       },
-      "naturezaReceita": "",
-      "formaPgto": "",
+      "naturezaReceita": {
+        "id": "1",
+        "descricao": "Vendas"
+      },
+      "formaPgto": {
+        "id": "4",
+        "descricao": "Transferência"
+      },
       "descricao": "",
-      "dtVencimento": "",
-      "valor": null
+      "dtVencimento": "2024-04-15T03:00:00.000Z",
+      "valor": 500
+    },
+    {
+      "id": "7b8d",
+      "numeroUnico": "",
+      "parceiro": {
+        "id": "2",
+        "razao_social": "teste2"
+      },
+      "naturezaReceita": {
+        "id": "3",
+        "descricao": "Serviços"
+      },
+      "formaPgto": {
+        "id": "2",
+        "descricao": "Pix"
+      },
+      "descricao": "teste",
+      "dtVencimento": "2024-04-15T03:00:00.000Z",
+      "valor": 200
+    },
+    {
+      "id": "e1e3",
+      "numeroUnico": "",
+      "parceiro": {
+        "id": "1",
+        "razao_social": "teste1"
+      },
+      "naturezaReceita": {
+        "id": "5",
+        "descricao": "Salario"
+      },
+      "formaPgto": {
+        "id": "4",
+        "descricao": "Transferência"
+      },
+      "descricao": "tes",
+      "dtVencimento": "2024-04-15T03:00:00.000Z",
+      "valor": 300
+    },
+    {
+      "id": "dd38",
+      "numeroUnico": "",
+      "parceiro": {
+        "id": "2",
+        "razao_social": "teste2"
+      },
+      "naturezaReceita": {
+        "id": "1",
+        "descricao": "Vendas"
+      },
+      "formaPgto": {
+        "id": "4",
+        "descricao": "Transferência"
+      },
+      "descricao": "teste222",
+      "dtVencimento": "2024-04-15T03:00:00.000Z",
+      "valor": 150
+    },
+    {
+      "id": "56db",
+      "numeroUnico": "",
+      "parceiro": "ouyto",
+      "naturezaReceita": {
+        "id": "3",
+        "descricao": "Serviços"
+      },
+      "formaPgto": {
+        "id": "3",
+        "descricao": "Boleto"
+      },
+      "descricao": "erver",
+      "dtVencimento": "2024-04-16T03:00:00.000Z",
+      "valor": 323
+    },
+    {
+      "id": "981c",
+      "numeroUnico": "",
+      "parceiro": {
+        "id": "2",
+        "razao_social": "teste2"
+      },
+      "naturezaReceita": {
+        "id": "3",
+        "descricao": "Serviços"
+      },
+      "formaPgto": {
+        "id": "1",
+        "descricao": "Dinheiro"
+      },
+      "descricao": "saasxa",
+      "dtVencimento": "2024-04-16T03:00:00.000Z",
+      "valor": 33
     }
   ],
   "parceiro": [

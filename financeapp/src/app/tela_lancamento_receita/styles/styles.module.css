@@ -74,3 +74,10 @@
   text-decoration-color: red;
   -moz-text-decoration-color: red;
 }
+
+
+
+
+ .meuAutocomplete .p-autocomplete-input {
+  width: 100% !important; /* Ajuste conforme necessário */
+ }

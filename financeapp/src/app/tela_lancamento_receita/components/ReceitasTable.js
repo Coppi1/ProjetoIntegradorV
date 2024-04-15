@@ -29,7 +29,7 @@ export default function ReceitasTable() {
     // Adicione um array vazio de dependências para garantir que o efeito seja executado apenas uma vez após a montagem inicial
     // Isso evita o ciclo infinito e o aviso de profundidade máxima de atualização excedida
     buscarNaturezas();
-  }, []);
+  }, [receitas]);
 
   const buscarNaturezas = async () => {
     try {

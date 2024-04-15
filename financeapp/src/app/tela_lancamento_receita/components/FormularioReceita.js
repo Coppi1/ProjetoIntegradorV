@@ -51,6 +51,12 @@ export const FormularioReceita = () => {
 
     if (!parceiro) {
       errosLocais.parceiro = "O parceiro é obrigatório.";
+    } else {
+      // Verifica se o parceiro selecionado existe na lista de parceiros
+      const parceiroExiste = parceiros.some(p => p.razao_social === parceiro.razao_social);
+      if (!parceiroExiste) {
+        errosLocais.parceiro = "O parceiro selecionado não existe.";
+      }
     }
 
     if (!dtVencimento) {
@@ -146,7 +152,7 @@ export const FormularioReceita = () => {
       // Limpar o formulário
       setNumeroUnico("");
       setNaturezaReceita("");
-      setFormasPgto("");
+      setformaPgto("");
       setDescricao("");
       setDtvencimento("");
       setValor("");
@@ -189,6 +195,7 @@ export const FormularioReceita = () => {
             itemTemplate={itemTemplate}
             onChange={(e) => setParceiro(e.value)}
             placeholder="Digite para buscar um parceiro"
+            className="p-fluid"
           />
           <span className={styles.errorText}>{erros.parceiro}</span>
           <br></br>

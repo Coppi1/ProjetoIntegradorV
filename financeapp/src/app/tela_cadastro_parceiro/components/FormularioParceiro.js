@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { InputText } from 'primereact/inputtext';
 import React, { useState } from 'react'
+import styles from '../styles/styles.module.css'
 
 export const FormularioParceiro = () => {
 
@@ -56,28 +57,46 @@ export const FormularioParceiro = () => {
 
     return (
         <div className="">
-            <div className="">
+            <div className={styles.FormularioContainer}>
                 <div className="">
                     <h4>Cadastro de Parceiro</h4>
                 </div>
-                <div id="RazaoSocial" className="">
-                    <label>Número único: </label>
-                    <InputText
-                        value={numeroUnico}
-                        onChange={(e) => setNumeroUnico(e.target.value)}
-                        readOnly="true"
-                    />
-                    <br></br>
-                </div>
+                <div id='Linha1'>
+                    <div id='InformacoesGerais'>
+                        <div id="RazaoSocial" className="">
+                            <label>Número único: </label>
+                            <InputText
+                                value={numeroUnico}
+                                onChange={(e) => setNumeroUnico(e.target.value)}
+                                readOnly="true"
+                            />
+                            <br></br>
+                        </div>
 
-                <div id="RazaoSocial" className="">
-                    <label>Razão social: </label>
-                    <InputText
-                        autoResize
-                        value={razao_social}
-                        onChange={(e) => setRazao_social(e.target.value)}
-                    />
-                    <br></br>
+                        <div id="RazaoSocial" className="">
+                            <label>Razão social: </label>
+                            <InputText
+                                autoResize
+                                value={razao_social}
+                                onChange={(e) => setRazao_social(e.target.value)}
+                            />
+                            <br></br>
+                        </div>
+                    </div>
+                    <div id='DadosBancarios'>
+
+
+                    </div>
+                </div>
+                <div id='Linha2'>
+                    <div id='Endereco'>
+
+
+                    </div>
+                    <div id='Contato'>
+
+
+                    </div>
                 </div>
                 {/* <div className="">
                     <Button label="Lançar" onClick={salvarReceita} />

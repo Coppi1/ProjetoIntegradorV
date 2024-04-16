@@ -121,6 +121,17 @@ export const FormularioReceita = () => {
     }
   };
 
+  const limparFormulario = async () => {
+    setNumeroUnico("");
+    setNaturezaReceita("");
+    setformaPgto("");
+    setDescricao("");
+    setDtvencimento("");
+    setValor("");
+    setParceiro(null);
+    setErros({});
+  }
+
   const salvarReceita = async () => {
     try {
       const isValid = validarFormulario();
@@ -149,15 +160,8 @@ export const FormularioReceita = () => {
         }
       );
 
-      // Limpar o formulário
-      setNumeroUnico("");
-      setNaturezaReceita("");
-      setformaPgto("");
-      setDescricao("");
-      setDtvencimento("");
-      setValor("");
-      setParceiro(null);
-      setErros({});
+      limparFormulario()
+
     } catch (error) {
       console.error("Erro ao salvar a receita:", error);
     }
@@ -231,6 +235,7 @@ export const FormularioReceita = () => {
             onChange={(e) => setDtvencimento(e.value)}
             dateFormat="dd/mm/yy"
             locale="br"
+            showButtonBar
           />
           <span className="text-red-500">{erros.dtVencimento}</span>
           <br></br>
@@ -269,7 +274,7 @@ export const FormularioReceita = () => {
 
         <div className={styles.button}>
           <Button label="Lançar" onClick={salvarReceita} />
-          <Button label="Limpar Campos" />
+          <Button label="Limpar Campos" onClick={limparFormulario} />
         </div>
       </div>
     </div>

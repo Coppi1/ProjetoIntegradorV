@@ -68,16 +68,16 @@
         "razao_social": "teste2"
       },
       "naturezaReceita": {
-        "id": "3",
-        "descricao": "Serviços"
+        "id": "4",
+        "descricao": "Emprestimos"
       },
       "formaPgto": {
         "id": "8",
         "descricao": "Juros"
       },
-      "descricao": "wdqwdq",
+      "descricao": "teste",
       "dtVencimento": "2024-04-16T03:00:00.000Z",
-      "valor": "150"
+      "valor": "5325"
     },
     {
       "id": "7ff2",
@@ -224,6 +224,25 @@
       "descricao": "saasxa",
       "dtVencimento": "2024-04-16T03:00:00.000Z",
       "valor": 33
+    },
+    {
+      "id": "fcc8",
+      "numeroUnico": "",
+      "parceiro": {
+        "id": "2",
+        "razao_social": "teste2"
+      },
+      "naturezaReceita": {
+        "id": "1",
+        "descricao": "Vendas"
+      },
+      "formaPgto": {
+        "id": "2",
+        "descricao": "Pix"
+      },
+      "descricao": "wdqwdq",
+      "dtVencimento": "2024-04-12T03:00:00.000Z",
+      "valor": 100
     }
   ],
   "parceiro": [

@@ -147,7 +147,7 @@ export default function EditarReceita({
             placeholder="Selecione a natureza"
           />
         </div>
-        <div className="p-field">
+        <div className="">
           <label htmlFor="dtVencimento">Data de Vencimento</label>
           <Calendar
             id="dtVencimento"
@@ -158,8 +158,8 @@ export default function EditarReceita({
                 dtVencimento: e.value,
               })
             }
-            placeholder="Selecione a data"
             dateFormat="dd/mm/yy"
+            showButtonBar
           />
         </div>
         <div className="p-field">

@@ -12,6 +12,7 @@ export const Grafico = () => {
   const [receitas, setReceitas] = useState([]);
   const [dataDe, setDataDe] = useState(new Date());
   const [dataAte, setDataAte] = useState(new Date());
+  const [mensagemErro, setMensagemErro] = useState("");
 
   const atualizarParaDatasAtuais = () => {
     let dataAtual = new Date();
@@ -38,6 +39,8 @@ export const Grafico = () => {
   useEffect(() => {
     buscarReceitas();
   }, [dataDe, dataAte]);
+
+  let erro
 
   useEffect(() => {
     if (receitas.length > 0) {
@@ -81,19 +84,28 @@ export const Grafico = () => {
 
   const buscarReceitas = async () => {
     try {
+
+      setMensagemErro("")
       const resposta = await axios.get(`http://localhost:4000/receitas`);
       setReceitas(resposta.data);
     } catch (error) {
       console.error("Erro ao buscar receitas:", error);
     }
+
   };
 
 
   const calcularValorTotalPorNatureza = (receitas, dataDe, dataAte) => {
+
     const filteredReceitas = receitas.filter(receita => {
       const receitaData = new Date(receita.dtVencimento);
       return receitaData >= dataDe && receitaData <= dataAte;
     });
+
+    if (filteredReceitas.length === 0) {
+      setMensagemErro("Nenhuma receita encontrada para o período especificado.");
+      return [];
+    }
 
     const valorTotalPorNatureza = filteredReceitas.reduce((acc, receita) => {
       const { naturezaReceita, valor } = receita;
@@ -146,6 +158,8 @@ export const Grafico = () => {
       <div className={styles.buttonGraphic}>
         <Button onClick={buscarReceitas}>Aplicar</Button>
       </div>
+
+      {mensagemErro && <div className={styles.errorText}>{mensagemErro}</div>}
 
       <Chart
         type="pie"

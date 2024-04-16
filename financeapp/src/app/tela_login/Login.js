@@ -7,6 +7,9 @@ import axios from 'axios';
 import { Messages } from 'primereact/messages';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { InputText } from "primereact/inputtext";
 import { FloatLabel } from 'primereact/floatlabel';
 
@@ -70,16 +73,15 @@ function Login() {
             <Card className="card">
                 <div className="buttoncontainer">
                     <Button className="logobutton" onClick={handleCadastroClick}>
-                        <img className="logo" src="https://st3.depositphotos.com/1688079/16329/i/450/depositphotos_163295012-stock-photo-back-arrow-icon-elegant-blue.jpg" alt=""></img>
-                    </Button>
+                        <FontAwesomeIcon icon={faArrowLeft} style={{ color: 'blue', fontSize: '35px' }} /></Button>
                 </div>
                 <h1 className="titulo">Faça o login</h1>
                 <div className="logocontainer">
                     <button className="logobutton" onClick={() => handleButtonClick('com Facebook')}>
-                        <img className="logo" src="https://logodownload.org/wp-content/uploads/2014/09/facebook-logo-3-1.png" alt=""></img>
+                        <FontAwesomeIcon icon={faFacebook} style={{ color: '#1877F2', fontSize: '50px' }} />
                     </button>
                     <button className="logobutton" onClick={() => handleButtonClick('com conta Google')}>
-                        <img className="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Google_Plus_logo_%282015-2019%29.svg/1200px-Google_Plus_logo_%282015-2019%29.svg.png" alt=""></img>
+                        <FontAwesomeIcon icon={faGoogle} style={{ color: '#EA4335', fontSize: '50px' }} />
                     </button>
                 </div>
                 {message && <p className="titulo2">{message}</p>}

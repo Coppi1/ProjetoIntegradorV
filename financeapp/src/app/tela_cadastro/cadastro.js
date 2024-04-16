@@ -6,7 +6,9 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Messages } from 'primereact/messages';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faEnvelope, faLock, faHome } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { InputText } from "primereact/inputtext";
 import { FloatLabel } from 'primereact/floatlabel';
 
@@ -76,6 +78,10 @@ function Cadastro() {
         navigate('/login');
     }
 
+    const handleInicioButtonClick = () => {
+        navigate('/');
+    }
+
     return (
         <div className="container">
             <Splitter className="splitter">
@@ -87,6 +93,8 @@ function Cadastro() {
                         </div>
                         <div>
                             <Button className="button" onClick={handleLoginButtonClick}>Fazer login</Button>
+                            <Button className="top-button" onClick={handleInicioButtonClick}>
+                                <FontAwesomeIcon icon={faHome} className="icon-spacing" />Início</Button>
                         </div>
                     </div>
                 </SplitterPanel>
@@ -95,10 +103,10 @@ function Cadastro() {
                     <h1 className="titulo">Crie uma conta</h1>
                     <div>
                         <button className="logobutton" onClick={() => handleButtonClick('com Facebook')}>
-                            <img className="logo" src="https://logodownload.org/wp-content/uploads/2014/09/facebook-logo-3-1.png" alt=""></img>
+                            <FontAwesomeIcon icon={faFacebook} style={{ color: '#1877F2', fontSize: '50px' }} />
                         </button>
                         <button className="logobutton" onClick={() => handleButtonClick('com conta Google')}>
-                            <img className="logo" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Google_Plus_logo_%282015-2019%29.svg/1200px-Google_Plus_logo_%282015-2019%29.svg.png" alt=""></img>
+                            <FontAwesomeIcon icon={faGoogle} style={{ color: '#EA4335', fontSize: '50px' }} />
                         </button>
                     </div>
                     {message && <p className="titulo2">{message}</p>}
@@ -124,7 +132,7 @@ function Cadastro() {
                             <FloatLabel className="floatlabel-center">
                                 <label htmlFor="email" className="label">
                                     <FontAwesomeIcon icon={faEnvelope} className="icon-spacing" /> Email:</label>
-                                <input
+                                <InputText
                                     type="email"
                                     id="email"
                                     value={p_email}

@@ -252,8 +252,8 @@
         "razao_social": "teste2"
       },
       "naturezaReceita": {
-        "id": "2",
-        "descricao": "Aplicações"
+        "id": "1",
+        "descricao": "Vendas"
       },
       "formaPgto": {
         "id": "4",
@@ -261,7 +261,7 @@
       },
       "descricao": "teste da tarde",
       "dtVencimento": "2024-05-05T03:00:00.000Z",
-      "valor": 20000
+      "valor": "30000"
     }
   ],
   "parceiro": [

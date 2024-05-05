@@ -21,6 +21,8 @@ export default function EditarReceita({
   setConfirmDialogVisible,
   confirmAction,
   naturezas,
+  parceiro,
+  formaPgto,
   addLocale
 }) {
 
@@ -119,6 +121,35 @@ export default function EditarReceita({
         }
       >
         <div className="p-field">
+          <label htmlFor="id">Número Único</label>
+          <InputText
+            id="id"
+            value={receitaEditada.id}
+            onChange={(e) =>
+              setReceitaEditada({
+                ...receitaEditada,
+                numeroUnico: e.target.value,
+              })
+            }
+          />
+        </div>
+        <div className="p-field">
+          <label htmlFor="parceiro.razao_social">Parceiro</label>
+          <Dropdown
+            id="parceiro.razao_social"
+            value={receitaEditada.parceiro.razao_social}
+            options={parceiro}
+            onChange={(e) =>
+              setReceitaEditada({
+                ...receitaEditada,
+                parceiro: e.target.value,
+              })
+            }
+            optionLabel="Parceiro"
+            placeholder="Selecione o parceiro"
+          />
+        </div>
+        <div className="p-field">
           <label htmlFor="descricao">Descrição da Receita</label>
           <InputText
             id="descricao"
@@ -147,7 +178,7 @@ export default function EditarReceita({
             placeholder="Selecione a natureza"
           />
         </div>
-        <div className="">
+        <div className="p-field">
           <label htmlFor="dtVencimento">Data de Vencimento</label>
           <Calendar
             id="dtVencimento"
@@ -172,7 +203,24 @@ export default function EditarReceita({
             }
           />
         </div>
+        <div className="p-field">
+          <label htmlFor="formaPgto.descricao">Forma de Pagamento</label>
+          <Dropdown
+            id="formaPgto.descricao"
+            value={receitaEditada.formaPgto.descricao}
+            options={formaPgto}
+            onChange={(e) =>
+              setReceitaEditada({
+                ...receitaEditada,
+                formaPgto: e.target.value,
+              })
+            }
+            optionLabel="formaPgto.descricao"
+            placeholder="Selecione a forma de pagamento"
+          />
+        </div>
       </Dialog>
+
     );
   };
 

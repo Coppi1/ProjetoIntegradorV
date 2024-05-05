@@ -58,6 +58,7 @@ function Cadastro() {
                     const response = await axios.post('http://localhost:4000/cadastro', dadosDoForm);
                     console.log('Resposta da API:', response.data);
                     alert("Cadastro realizado com sucesso");
+                    navigate('/Home');
                 } catch (error) {
                     console.error('Erro ao enviar dados para a API:', error);
                 }

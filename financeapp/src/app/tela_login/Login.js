@@ -32,7 +32,7 @@ function Login() {
             if (response.data.length === 0) {
                 msgs.current.show({ sticky: true, severity: 'error', summary: '', detail: 'Usuário ou senha inválidos', closable: true });
             } else {
-                navigate('/LancamentoReceita');
+                navigate('/Home');
             }
         } catch (error) {
             console.error('Erro ao verificar email cadastrado:', error);

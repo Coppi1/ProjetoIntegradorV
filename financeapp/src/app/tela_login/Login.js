@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 import './login.css';
@@ -19,6 +19,7 @@ function Login() {
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
     const msgs = useRef(null);
+    const [lembrarMe, setLembrarMe] = useState(false);
 
     const handleLogin = async () => {
         if (email === "" || password === "") {
@@ -31,7 +32,7 @@ function Login() {
             if (response.data.length === 0) {
                 msgs.current.show({ sticky: true, severity: 'error', summary: '', detail: 'Usuário ou senha inválidos', closable: true });
             } else {
-                alert("Login realizado com sucesso!");
+                navigate('/Home');
             }
         } catch (error) {
             console.error('Erro ao verificar email cadastrado:', error);
@@ -40,7 +41,7 @@ function Login() {
     }
 
     const handleButtonClick = (serviceName) => {
-        alert(`Cadastro efetuado com sucesso ${serviceName}!`);
+        alert(`Login efetuado com sucesso ${serviceName}!`);
     }
 
     const handleCadastroClick = () => {
@@ -67,6 +68,10 @@ function Login() {
             alert("Erro ao verificar email cadastrado. Por favor, tente novamente mais tarde.");
         }
     }
+
+    const toggleRememberMe = () => {
+        setLembrarMe(!lembrarMe);
+    };
 
     return (
         <div className="container">
@@ -116,6 +121,17 @@ function Login() {
                             />
                         </FloatLabel>
                     </div>
+                </div>
+                <div>
+                    <label htmlFor="rememberMe">
+                        <input
+                            type="checkbox"
+                            id="rememberMe"
+                            checked={lembrarMe}
+                            onChange={toggleRememberMe}
+                        />
+                        Lembrar-me
+                    </label>
                 </div>
                 <div className="buttoncontainer">
                     <Button className="button2" onClick={handleForgotPassword}>Esqueceu a senha?</Button>

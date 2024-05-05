@@ -309,6 +309,56 @@
       "nome": "tes",
       "email": "raphaelaml1@outlook.com",
       "password": "11"
+    },
+    {
+      "id": "baf9",
+      "error": "idpiframe_initialization_failed",
+      "details": "Not a valid origin for the client: http://localhost:3000 has not been registered for client ID Seu ID de cliente do Google. Please go to https://console.developers.google.com/ and register this origin for your project's client ID."
+    },
+    {
+      "id": "940b",
+      "error": "popup_closed_by_user"
+    },
+    {
+      "id": "6715",
+      "error": "popup_closed_by_user"
+    },
+    {
+      "id": "ca55",
+      "error": "idpiframe_initialization_failed",
+      "details": "Not a valid origin for the client: http://localhost:3000 has not been registered for client ID Seu ID de cliente do Google. Please go to https://console.developers.google.com/ and register this origin for your project's client ID."
+    },
+    {
+      "id": "d5df",
+      "error": "popup_closed_by_user"
+    },
+    {
+      "id": "ac8a",
+      "error": "idpiframe_initialization_failed",
+      "details": "Not a valid origin for the client: http://localhost:3000 has not been registered for client ID Seu ID de cliente do Google. Please go to https://console.developers.google.com/ and register this origin for your project's client ID."
+    },
+    {
+      "id": "2bd4",
+      "error": "idpiframe_initialization_failed",
+      "details": "Not a valid origin for the client: http://localhost:3000 has not been registered for client ID Seu ID de cliente do Google. Please go to https://console.developers.google.com/ and register this origin for your project's client ID."
+    },
+    {
+      "id": "8664",
+      "nome": "teste",
+      "email": "teste@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "ec93",
+      "nome": "teste1",
+      "email": "teste1@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": "72d3",
+      "nome": "testeteste",
+      "email": "testeteste@gmail.com",
+      "password": "12345"
     }
   ]
 }

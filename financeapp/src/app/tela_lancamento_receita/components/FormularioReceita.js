@@ -233,10 +233,11 @@ export const FormularioReceita = () => {
           <Calendar
             value={dtVencimento}
             onChange={(e) => setDtvencimento(e.value)}
-            dateFormat="dd/mm/yy"
+            dateFormat="dd/mm/yyyy"
             locale="br"
             showButtonBar
           />
+
           <span className="text-red-500">{erros.dtVencimento}</span>
           <br></br>
         </div>

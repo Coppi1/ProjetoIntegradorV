@@ -8,7 +8,6 @@ import Cadastro from "./app/tela_cadastro/cadastro";
 import Login from "./app/tela_login/Login";
 import { LancamentoReceita } from "./app/tela_lancamento_receita/LancamentoReceita";
 import { CadastroParceiro } from "./app/tela_cadastro_parceiro/CadastroParceiro";
-import Header from "./components/Header/Header";
 import { Teste } from "./app/Teste";
 
 

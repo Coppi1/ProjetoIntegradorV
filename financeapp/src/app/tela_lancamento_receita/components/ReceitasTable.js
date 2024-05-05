@@ -90,10 +90,12 @@ export default function ReceitasTable() {
         emptyMessage="Nenhuma receita encontrada"
       >
         <Column field="id" header="Número Único" />
+        <Column filter="parceiro.razao_social" header="Parceiro"/>
         <Column field="descricao" header="Descrição da Receita" />
         <Column field="naturezaReceita.descricao" header="Natureza da Receita" />
         <Column field="dtVencimento" header="Data de Vencimento" />
         <Column field="valor" header="Valor" />
+        <Column filter="formaPgto" header="Forma de Pagamento"/>
         <Column body={renderEditButton} header="Ações" />
       </DataTable>
       <EditarReceita

@@ -61,25 +61,6 @@
   ],
   "receitas": [
     {
-      "id": "4d69",
-      "numeroUnico": "",
-      "parceiro": {
-        "id": "2",
-        "razao_social": "teste2"
-      },
-      "naturezaReceita": {
-        "id": "4",
-        "descricao": "Emprestimos"
-      },
-      "formaPgto": {
-        "id": "8",
-        "descricao": "Juros"
-      },
-      "descricao": "teste",
-      "dtVencimento": "2024-04-16T03:00:00.000Z",
-      "valor": "5325"
-    },
-    {
       "id": "7ff2",
       "numeroUnico": "",
       "parceiro": {

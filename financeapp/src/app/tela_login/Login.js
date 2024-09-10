@@ -5,11 +5,11 @@ import './login.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Messages } from 'primereact/messages';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { faFacebook } from '@fortawesome/free-brands-svg-icons';
-import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons';
+// import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+// import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+// import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { InputText } from "primereact/inputtext";
 import { FloatLabel } from 'primereact/floatlabel';
 
@@ -73,15 +73,17 @@ function Login() {
             <Card className="card">
                 <div className="buttoncontainer">
                     <Button className="logobutton" onClick={handleCadastroClick}>
-                        <FontAwesomeIcon icon={faArrowLeft} style={{ color: 'blue', fontSize: '35px' }} /></Button>
+                        {/* <FontAwesomeIcon icon={faArrowLeft} style={{ color: 'blue', fontSize: '35px' }} /> */}
+
+                    </Button>
                 </div>
                 <h1 className="titulo">Faça o login</h1>
                 <div className="logocontainer">
                     <button className="logobutton" onClick={() => handleButtonClick('com Facebook')}>
-                        <FontAwesomeIcon icon={faFacebook} style={{ color: '#1877F2', fontSize: '50px' }} />
+                        {/* <FontAwesomeIcon icon={faFacebook} style={{ color: '#1877F2', fontSize: '50px' }} /> */}
                     </button>
                     <button className="logobutton" onClick={() => handleButtonClick('com conta Google')}>
-                        <FontAwesomeIcon icon={faGoogle} style={{ color: '#EA4335', fontSize: '50px' }} />
+                        {/* <FontAwesomeIcon icon={faGoogle} style={{ color: '#EA4335', fontSize: '50px' }} /> */}
                     </button>
                 </div>
                 {message && <p className="titulo2">{message}</p>}
@@ -93,7 +95,8 @@ function Login() {
                     <div>
                         <FloatLabel className="floatlabel-center">
                             <label className="label" htmlFor="email">
-                                <FontAwesomeIcon icon={faEnvelope} className="icon-spacing" /> Email:</label>
+                                {/* <FontAwesomeIcon icon={faEnvelope} className="icon-spacing" />  */}
+                                Email:</label>
                             <InputText
                                 className="input"
                                 type="text"
@@ -106,7 +109,8 @@ function Login() {
                     <div>
                         <FloatLabel className="floatlabel-center">
                             <label className="label" htmlFor="password">
-                                <FontAwesomeIcon icon={faLock} className="icon-spacing" />Senha:</label>
+                                {/* <FontAwesomeIcon icon={faLock} className="icon-spacing" /> */}
+                                Senha:</label>
                             <InputText
                                 className="input"
                                 type="password"
